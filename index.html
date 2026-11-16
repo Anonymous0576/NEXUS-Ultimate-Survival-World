@@ -1,643 +1,339 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NEXUS is an open-world multiplayer survival game. Explore, compete, build, race, and play in one connected world.">
-  <title>NEXUS — Ultimate Survival World</title>
-
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #080b10;
-      --panel: #111720;
-      --text: #f2f5f7;
-      --muted: #a4afb9;
-      --accent: #c5ff4a;
-      --line: rgba(255, 255, 255, 0.12);
-      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1120px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .site-header {
-      position: absolute;
-      z-index: 5;
-      inset: 0 0 auto;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.13);
-    }
-
-    .nav {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      font-size: 1.45rem;
-      font-weight: 900;
-      letter-spacing: 0.22em;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      color: #d3d9de;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    .nav-cta,
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 20px;
-      border: 1px solid var(--accent);
-      border-radius: 4px;
-      background: var(--accent);
-      color: #10150a;
-      font-weight: 800;
-      transition: transform 160ms ease, background 160ms ease;
-    }
-
-    .nav-cta:hover,
-    .button:hover {
-      transform: translateY(-2px);
-      background: #d5ff7b;
-    }
-
-    .button.secondary {
-      background: transparent;
-      color: var(--text);
-      border-color: rgba(255, 255, 255, 0.42);
-    }
-
-    .button.secondary:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .hero {
-      min-height: 740px;
-      display: grid;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(8, 11, 16, 0.96) 0%, rgba(8, 11, 16, 0.73) 48%, rgba(8, 11, 16, 0.17) 100%),
-        linear-gradient(0deg, var(--bg), transparent 38%),
-        url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=2000&q=85") center 48% / cover;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(ellipse at 70% 40%, rgba(197, 255, 74, 0.12), transparent 42%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      padding-top: 85px;
-    }
-
-    .eyebrow {
-      margin: 0 0 16px;
-      color: var(--accent);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(3.8rem, 11vw, 8rem);
-      line-height: 0.88;
-      letter-spacing: -0.07em;
-    }
-
-    .hero h1 span {
-      color: var(--accent);
-    }
-
-    .hero-copy {
-      max-width: 570px;
-      margin: 26px 0 30px;
-      color: #d0d6dc;
-      font-size: clamp(1rem, 2vw, 1.2rem);
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .hero-note {
-      margin-top: 52px;
-      color: #c2cbd1;
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    section {
-      padding: 96px 0;
-    }
-
-    .section-heading {
-      max-width: 690px;
-      margin-bottom: 42px;
-    }
-
-    .section-heading h2 {
-      margin: 0 0 14px;
-      font-size: clamp(2.2rem, 5vw, 3.7rem);
-      line-height: 1.05;
-      letter-spacing: -0.05em;
-    }
-
-    .section-heading p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .intro-art {
-      min-height: 360px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background:
-        linear-gradient(0deg, rgba(8, 11, 16, 0.18), rgba(8, 11, 16, 0.18)),
-        url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85") center / cover;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-    }
-
-    .intro-copy p {
-      color: var(--muted);
-    }
-
-    .feature-grid,
-    .mode-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .feature-card,
-    .mode-card {
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015));
-    }
-
-    .feature-card .number {
-      color: var(--accent);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-    }
-
-    .feature-card h3,
-    .mode-card h3 {
-      margin: 12px 0 8px;
-      font-size: 1.1rem;
-    }
-
-    .feature-card p,
-    .mode-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .modes {
-      background: #0c1118;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .mode-card {
-      min-height: 175px;
-      transition: border-color 160ms ease, transform 160ms ease;
-    }
-
-    .mode-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(197, 255, 74, 0.65);
-    }
-
-    .mode-icon {
-      color: var(--accent);
-      font-size: 1.35rem;
-    }
-
-    .systems-layout {
-      display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 56px;
-      align-items: start;
-    }
-
-    .systems-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 24px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-
-    .systems-list li {
-      padding: 15px 0;
-      border-bottom: 1px solid var(--line);
-      color: #d7dde1;
-    }
-
-    .systems-list li::before {
-      content: "＋";
-      margin-right: 10px;
-      color: var(--accent);
-      font-weight: 800;
-    }
-
-    .vision {
-      padding: 100px 0;
-      text-align: center;
-      background:
-        radial-gradient(ellipse at center, rgba(197, 255, 74, 0.1), transparent 55%),
-        #0c1118;
-    }
-
-    .vision blockquote {
-      max-width: 900px;
-      margin: 0 auto 24px;
-      font-size: clamp(1.8rem, 4.5vw, 3.6rem);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.04em;
-    }
-
-    .vision p {
-      max-width: 700px;
-      margin: 0 auto;
-      color: var(--muted);
-    }
-
-    .final-cta {
-      padding: 76px 0;
-      text-align: center;
-    }
-
-    .final-cta h2 {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      letter-spacing: -0.04em;
-    }
-
-    .final-cta p {
-      margin: 0 0 24px;
-      color: var(--muted);
-    }
-
-    footer {
-      padding: 24px 0;
-      border-top: 1px solid var(--line);
-      color: #88939c;
-      font-size: 0.85rem;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 760px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        min-height: 680px;
-        background-position: 58% center;
-      }
-
-      .intro-grid,
-      .systems-layout {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .intro-art {
-        min-height: 280px;
-        grid-row: 1;
-      }
-
-      .feature-grid,
-      .mode-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        width: min(100% - 28px, 1120px);
-      }
-
-      section {
-        padding: 72px 0;
-      }
-
-      .nav-cta {
-        min-height: 40px;
-        padding: 0 12px;
-        font-size: 0.82rem;
-      }
-
-      .feature-grid,
-      .mode-grid,
-      .systems-list {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: 640px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        transition: none !important;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <header class="site-header">
-    <nav class="nav container" aria-label="Main navigation">
-      <a class="logo" href="#home" aria-label="NEXUS home">NE<span>X</span>US</a>
-
-      <div class="nav-links">
-        <a href="#world">The World</a>
-        <a href="#features">Features</a>
-        <a href="#modes">Game Modes</a>
-        <a href="#vision">Vision</a>
-      </div>
-
-      <a class="nav-cta" href="#modes">Explore NEXUS</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-content">
-          <p class="eyebrow">One connected gaming universe</p>
-          <h1>NEX<span>U</span>S</h1>
-          <p class="hero-copy">
-            Explore a vast world. Survive the wild. Build your home.
-            Race, compete, and create your own story with friends.
-          </p>
-          <div class="button-row">
-            <a class="button" href="#world">Discover the World</a>
-            <a class="button secondary" href="#modes">View Game Modes</a>
-          </div>
-          <p class="hero-note">One World. Unlimited Adventures. Endless Possibilities.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="world">
-      <div class="container intro-grid">
-        <div class="intro-copy">
-          <p class="eyebrow">Your world, your rules</p>
-          <div class="section-heading">
-            <h2>One world. Countless ways to play.</h2>
-            <p>
-              NEXUS brings survival, action, exploration, racing, sports, and
-              creativity together in one massive multiplayer experience.
-            </p>
-          </div>
-          <p>
-            Travel from bustling cities to quiet villages, dense forests,
-            sun-scorched deserts, remote islands, and hidden locations.
-            Venture out alone or join friends to explore a world that keeps
-            changing around you.
-          </p>
-          <p>
-            Take on a mission, gather resources, compete for victory, or simply
-            make your own fun. In NEXUS, the next adventure is yours to choose.
-          </p>
-        </div>
-        <div class="intro-art" role="img" aria-label="A scenic wilderness landscape"></div>
-      </div>
-    </section>
-
-    <section id="features">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Built for every kind of player</p>
-          <h2>A world of possibilities</h2>
-          <p>
-            Jump between different experiences while staying in the same
-            connected universe.
-          </p>
-        </div>
-
-        <div class="feature-grid">
-          <article class="feature-card">
-            <span class="number">01 / EXPLORE</span>
-            <h3>Open World</h3>
-            <p>Discover cities, villages, forests, oceans, mountains, and hidden places.</p>
-          </article>
-          <article class="feature-card">
-            <span class="number">02 / COMPETE</span>
-            <h3>Battle Royale</h3>
-            <p>Enter the arena, outlast your rivals, and fight to be the last survivor.</p>
-          </article>
-          <article class="feature-card">
-            <span class="number">03 / SURVIVE</span>
-            <h3>Survival & Crafting</h3>
-            <p>Gather resources, craft useful gear, and build shelter in the wild.</p>
-          </article>
-          <article class="feature-card">
-            <span class="number">04 / RACE</span>
-            <h3>Vehicles</h3>
-            <p>Take cars, bikes, trucks, and other vehicles across the world.</p>
-          </article>
-          <article class="feature-card">
-            <span class="number">05 / CREATE</span>
-            <h3>Sandbox Building</h3>
-            <p>Build houses, shape environments, and make a space of your own.</p>
-          </article>
-          <article class="feature-card">
-            <span class="number">06 / CONNECT</span>
-            <h3>Play Together</h3>
-            <p>Team up with friends or meet players from around the world.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="modes" id="modes">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Choose your adventure</p>
-          <h2>Game modes</h2>
-          <p>Switch up the pace whenever you want a new challenge.</p>
-        </div>
-
-        <div class="mode-grid">
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⌖</span>
-            <h3>Battle Royale</h3>
-            <p>Be the last player standing.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">▧</span>
-            <h3>Survival</h3>
-            <p>Gather, craft, build, and endure.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⇄</span>
-            <h3>Team Deathmatch</h3>
-            <p>Join a team and compete in fast-paced battles.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">➤</span>
-            <h3>Racing</h3>
-            <p>Race vehicles across courses and open terrain.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">✦</span>
-            <h3>Adventure</h3>
-            <p>Complete story missions and uncover secrets.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⌂</span>
-            <h3>Sandbox</h3>
-            <p>Build freely and create your own world.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">◎</span>
-            <h3>Sports</h3>
-            <p>Play football, cricket, and more with friends.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">◉</span>
-            <h3>Free Roam</h3>
-            <p>Explore at your own pace, without restrictions.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="systems">
-      <div class="container systems-layout">
-        <div class="section-heading">
-          <p class="eyebrow">A living universe</p>
-          <h2>The world keeps moving.</h2>
-          <p>
-            Dynamic systems and social features make every session feel like
-            part of a larger adventure.
-          </p>
-        </div>
-
-        <ul class="systems-list">
-          <li>Dynamic day-and-night cycle</li>
-          <li>Changing weather conditions</li>
-          <li>Multiple maps and environments</li>
-          <li>In-game economy and trading</li>
-          <li>Character progression</li>
-          <li>Achievements and rewards</li>
-          <li>Voice and text chat</li>
-          <li>Private rooms and custom matches</li>
-          <li>Character and outfit customization</li>
-          <li>Regular events and seasonal updates</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="vision" id="vision">
-      <div class="container">
-        <p class="eyebrow">The NEXUS vision</p>
-        <blockquote>
-          “Explore, compete, build, race, survive, and play—together in one world.”
-        </blockquote>
-        <p>
-          NEXUS is an all-in-one gaming universe for players who want the freedom
-          to choose their own adventure and share it with friends.
-        </p>
-      </div>
-    </section>
-
-    <section class="final-cta">
-      <div class="container">
-        <h2>Your next adventure starts here.</h2>
-        <p>One World. Unlimited Adventures. Endless Possibilities.</p>
-        <a class="button" href="#home">Back to the Top</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-content">
-      <span class="logo">NE<span>X</span>US</span>
-      <span>Game concept landing page · NEXUS — Ultimate Survival World</span>
+<div class="filter-list" role="group" aria-label="Filter games by category">
+  <button class="filter-button" type="button" data-filter="all" aria-pressed="true">All games</button>
+  <button class="filter-button" type="button" data-filter="action" aria-pressed="false">Action</button>
+  <button class="filter-button" type="button" data-filter="tactical" aria-pressed="false">Tactical</button>
+  <button class="filter-button" type="button" data-filter="shooter" aria-pressed="false">Shooter</button>
+  <button class="filter-button" type="button" data-filter="survival" aria-pressed="false">Survival</button>
+  <button class="filter-button" type="button" data-filter="adventure" aria-pressed="false">Adventure</button>
+  <button class="filter-button" type="button" data-filter="horror" aria-pressed="false">Horror</button>
+  <button class="filter-button" type="button" data-filter="funny" aria-pressed="false">Funny</button>
+  <button class="filter-button" type="button" data-filter="racing" aria-pressed="false">Racing</button>
+  <button class="filter-button" type="button" data-filter="creative" aria-pressed="false">Creative</button>
+  <button class="filter-button" type="button" data-filter="sports" aria-pressed="false">Sports</button>
+</div>
+
+<div class="game-grid" id="game-grid">
+  <article class="game-card" data-category="action">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=900&q=85" alt="Dramatic night sky above a mountain range" loading="lazy">
+      <span class="game-badge">Action</span>
     </div>
-  </footer>
-</body>
-</html>
+    <div class="game-content">
+      <h3>Last Stand</h3>
+      <p>Fight your way through the arena and be the last player standing.</p>
+      <div class="game-meta"><span>ARENA BATTLE</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="action">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=85" alt="Sunlight shining through a forest" loading="lazy">
+      <span class="game-badge">Action</span>
+    </div>
+    <div class="game-content">
+      <h3>Shadow Strike</h3>
+      <p>Track your target through a dangerous world of rival factions.</p>
+      <div class="game-meta"><span>MISSION ACTION</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="action">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85" alt="Adventurer overlooking a dramatic landscape" loading="lazy">
+      <span class="game-badge">Action</span>
+    </div>
+    <div class="game-content">
+      <h3>Rogue Run</h3>
+      <p>Escape a sprawling city while rivals close in from every direction.</p>
+      <div class="game-meta"><span>FAST-PACED ACTION</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="tactical">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=900&q=85" alt="Mountain terrain at night" loading="lazy">
+      <span class="game-badge">Tactical</span>
+    </div>
+    <div class="game-content">
+      <h3>Operation North</h3>
+      <p>Plan your approach, coordinate your squad, and complete the mission.</p>
+      <div class="game-meta"><span>SQUAD TACTICS</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="tactical">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85" alt="Remote mountain lake surrounded by wilderness" loading="lazy">
+      <span class="game-badge">Tactical</span>
+    </div>
+    <div class="game-content">
+      <h3>Silent Protocol</h3>
+      <p>Use stealth, teamwork, and smart decisions to get in and out.</p>
+      <div class="game-meta"><span>STEALTH MISSION</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="tactical">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=900&q=85" alt="Ocean waves under a cloudy sky" loading="lazy">
+      <span class="game-badge">Tactical</span>
+    </div>
+    <div class="game-content">
+      <h3>Frontline Command</h3>
+      <p>Lead your team through objective-based battles and changing maps.</p>
+      <div class="game-meta"><span>TEAM STRATEGY</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="shooter">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=85" alt="Snowy mountain beneath a starry sky" loading="lazy">
+      <span class="game-badge">Shooter</span>
+    </div>
+    <div class="game-content">
+      <h3>Zero Hour</h3>
+      <p>Jump into quick matches where sharp aim and teamwork matter.</p>
+      <div class="game-meta"><span>TEAM SHOOTER</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="shooter">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85" alt="Wide open landscape beneath a dramatic sky" loading="lazy">
+      <span class="game-badge">Shooter</span>
+    </div>
+    <div class="game-content">
+      <h3>Dust Circuit</h3>
+      <p>Battle across a rugged frontier in this high-energy free-for-all.</p>
+      <div class="game-meta"><span>FREE-FOR-ALL</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="shooter">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=85" alt="Mountain lake and distant peaks" loading="lazy">
+      <span class="game-badge">Shooter</span>
+    </div>
+    <div class="game-content">
+      <h3>Rift Breakers</h3>
+      <p>Team up to hold the line against waves of increasingly tough foes.</p>
+      <div class="game-meta"><span>CO-OP SHOOTER</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="survival">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85" alt="Mountain lake in a remote wilderness" loading="lazy">
+      <span class="game-badge">Survival</span>
+    </div>
+    <div class="game-content">
+      <h3>Wild Frontier</h3>
+      <p>Gather, craft, and find your footing in an untamed wilderness.</p>
+      <div class="game-meta"><span>CO-OP SURVIVAL</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="survival">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=85" alt="Deep green forest filled with tall trees" loading="lazy">
+      <span class="game-badge">Survival</span>
+    </div>
+    <div class="game-content">
+      <h3>Last Shelter</h3>
+      <p>Build a safe place, manage supplies, and make it through the night.</p>
+      <div class="game-meta"><span>BASE BUILDING</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="survival">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85" alt="Waves rolling toward a remote shore" loading="lazy">
+      <span class="game-badge">Survival</span>
+    </div>
+    <div class="game-content">
+      <h3>Castaway</h3>
+      <p>Survive on a remote island and turn scattered resources into a home.</p>
+      <div class="game-meta"><span>ISLAND SURVIVAL</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="adventure">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85" alt="Mountain peaks rising above the clouds" loading="lazy">
+      <span class="game-badge">Adventure</span>
+    </div>
+    <div class="game-content">
+      <h3>Lost Horizon</h3>
+      <p>Follow ancient clues and uncover the secrets of a forgotten place.</p>
+      <div class="game-meta"><span>EXPLORATION</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="adventure">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85" alt="A traveler looking out across a wide landscape" loading="lazy">
+      <span class="game-badge">Adventure</span>
+    </div>
+    <div class="game-content">
+      <h3>Beyond the Map</h3>
+      <p>Set out on a journey through remote regions and unexpected discoveries.</p>
+      <div class="game-meta"><span>OPEN-WORLD QUEST</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="adventure">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=900&q=85" alt="Open water stretching toward the horizon" loading="lazy">
+      <span class="game-badge">Adventure</span>
+    </div>
+    <div class="game-content">
+      <h3>Deep Unknown</h3>
+      <p>Explore remote shores, complete story missions, and find what lies beyond.</p>
+      <div class="game-meta"><span>STORY ADVENTURE</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="horror">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=85" alt="Dark forest filled with shadowy trees" loading="lazy">
+      <span class="game-badge">Horror</span>
+    </div>
+    <div class="game-content">
+      <h3>Whispering Pines</h3>
+      <p>Find your way through a dark forest where every sound means something.</p>
+      <div class="game-meta"><span>ATMOSPHERIC HORROR</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="horror">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=900&q=85" alt="A dark mountain landscape beneath a night sky" loading="lazy">
+      <span class="game-badge">Horror</span>
+    </div>
+    <div class="game-content">
+      <h3>Night Shift</h3>
+      <p>Make it to sunrise while strange things move just out of sight.</p>
+      <div class="game-meta"><span>CO-OP HORROR</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="horror">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85" alt="Remote landscape under a stormy sky" loading="lazy">
+      <span class="game-badge">Horror</span>
+    </div>
+    <div class="game-content">
+      <h3>Quiet House</h3>
+      <p>Search a deserted home for answers—and a way back outside.</p>
+      <div class="game-meta"><span>MYSTERY HORROR</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="funny">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85" alt="A bright, open landscape ready for an adventure" loading="lazy">
+      <span class="game-badge">Funny</span>
+    </div>
+    <div class="game-content">
+      <h3>Wobbly Warriors</h3>
+      <p>Flop, tumble, and cause cheerful chaos in silly team challenges.</p>
+      <div class="game-meta"><span>PARTY GAME</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="funny">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85" alt="Ocean waves splashing along the coast" loading="lazy">
+      <span class="game-badge">Funny</span>
+    </div>
+    <div class="game-content">
+      <h3>Goose on the Loose</h3>
+      <p>Cause harmless mayhem, complete ridiculous tasks, and honk at everyone.</p>
+      <div class="game-meta"><span>COMEDY CO-OP</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="funny">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85" alt="Peaceful scenery for an unexpectedly chaotic race" loading="lazy">
+      <span class="game-badge">Funny</span>
+    </div>
+    <div class="game-content">
+      <h3>Kitchen Dash</h3>
+      <p>Work together in a chaotic kitchen where everything goes hilariously wrong.</p>
+      <div class="game-meta"><span>CO-OP PARTY</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="racing">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85" alt="A wide road through a dramatic landscape" loading="lazy">
+      <span class="game-badge">Racing</span>
+    </div>
+    <div class="game-content">
+      <h3>Neon Rush</h3>
+      <p>Take on tight street circuits and open-road rivalries at full speed.</p>
+      <div class="game-meta"><span>ARCADE RACING</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="racing">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=85" alt="A scenic mountain road beside a lake" loading="lazy">
+      <span class="game-badge">Racing</span>
+    </div>
+    <div class="game-content">
+      <h3>Trailblazer Rally</h3>
+      <p>Race across rugged terrain and master every twist in the trail.</p>
+      <div class="game-meta"><span>OFF-ROAD RALLY</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="creative">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=85" alt="A lush forest full of trees and greenery" loading="lazy">
+      <span class="game-badge">Creative</span>
+    </div>
+    <div class="game-content">
+      <h3>Build Beyond</h3>
+      <p>Dream big, build freely, and create a place that feels like yours.</p>
+      <div class="game-meta"><span>SANDBOX BUILDING</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="creative">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85" alt="Mountain peaks surrounded by clouds" loading="lazy">
+      <span class="game-badge">Creative</span>
+    </div>
+    <div class="game-content">
+      <h3>World Makers</h3>
+      <p>Shape landscapes, design your own spaces, and invite friends to explore.</p>
+      <div class="game-meta"><span>WORLD BUILDING</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="sports">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85" alt="Bright ocean and waves beneath the sun" loading="lazy">
+      <span class="game-badge">Sports</span>
+    </div>
+    <div class="game-content">
+      <h3>Goal Rush</h3>
+      <p>Bring your friends together for quick matches and friendly competition.</p>
+      <div class="game-meta"><span>TEAM SPORTS</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+
+  <article class="game-card" data-category="sports">
+    <div class="game-image">
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=85" alt="Open landscape beneath distant mountain peaks" loading="lazy">
+      <span class="game-badge">Sports</span>
+    </div>
+    <div class="game-content">
+      <h3>Summit Challenge</h3>
+      <p>Compete with friends in a series of outdoor skill and movement challenges.</p>
+      <div class="game-meta"><span>OUTDOOR SPORTS</span><a class="text-link" href="#modes">Explore mode ↗</a></div>
+    </div>
+  </article>
+</div>
