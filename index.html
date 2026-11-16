@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NEXUS is an open-world multiplayer survival game. Explore, compete, build, race, and play in one connected world.">
+  <meta name="description" content="Explore the NEXUS gaming universe: action, tactics, survival, adventure, horror, racing, sports, and more.">
   <meta name="theme-color" content="#080b10">
   <title>NEXUS — Ultimate Survival World</title>
 
@@ -19,12 +19,11 @@
       --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 85px;
     }
 
     body {
@@ -35,10 +34,9 @@
       line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
+
+    button { font: inherit; }
 
     .container {
       width: min(1120px, calc(100% - 40px));
@@ -50,6 +48,7 @@
       z-index: 5;
       inset: 0 0 auto;
       border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+      background: rgba(8, 11, 16, 0.25);
     }
 
     .nav {
@@ -66,9 +65,7 @@
       letter-spacing: 0.22em;
     }
 
-    .logo span {
-      color: var(--accent);
-    }
+    .logo span { color: var(--accent); }
 
     .nav-links {
       display: flex;
@@ -78,9 +75,7 @@
       font-size: 0.9rem;
     }
 
-    .nav-links a:hover {
-      color: var(--accent);
-    }
+    .nav-links a:hover { color: var(--accent); }
 
     .nav-cta,
     .button {
@@ -94,6 +89,7 @@
       background: var(--accent);
       color: #10150a;
       font-weight: 800;
+      cursor: pointer;
       transition: transform 160ms ease, background 160ms ease;
     }
 
@@ -157,9 +153,7 @@
       letter-spacing: -0.07em;
     }
 
-    .hero h1 span {
-      color: var(--accent);
-    }
+    .hero h1 span { color: var(--accent); }
 
     .hero-copy {
       max-width: 570px;
@@ -182,9 +176,7 @@
       text-transform: uppercase;
     }
 
-    section {
-      padding: 96px 0;
-    }
+    section { padding: 96px 0; }
 
     .section-heading {
       max-width: 690px;
@@ -220,9 +212,7 @@
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
     }
 
-    .intro-copy p {
-      color: var(--muted);
-    }
+    .intro-copy p { color: var(--muted); }
 
     .feature-grid,
     .mode-grid {
@@ -261,12 +251,11 @@
 
     .modes {
       background: #0c1118;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      border-block: 1px solid var(--line);
     }
 
     .mode-card {
-      min-height: 175px;
+      min-height: 150px;
       transition: border-color 160ms ease, transform 160ms ease;
     }
 
@@ -362,10 +351,10 @@
       flex-wrap: wrap;
     }
 
+    /* Game library cards */
     .game-library {
       background: #0c1118;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      border-block: 1px solid var(--line);
     }
 
     .game-library-heading {
@@ -377,21 +366,20 @@
 
     .game-count {
       display: inline-block;
-      padding: 9px 12px;
+      margin-bottom: 42px;
+      padding: 8px 12px;
       border: 1px solid var(--line);
       border-radius: 999px;
       color: var(--accent);
       font-size: 0.8rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
     }
 
     .game-filters {
       display: flex;
       flex-wrap: wrap;
       gap: 9px;
-      margin: 0 0 28px;
+      margin-bottom: 28px;
     }
 
     .filter-button {
@@ -402,15 +390,13 @@
       background: transparent;
       color: #d3d9de;
       cursor: pointer;
-      font: inherit;
       font-size: 0.84rem;
-      transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
     }
 
     .filter-button:hover,
     .filter-button[aria-pressed="true"] {
       border-color: var(--accent);
-      background: rgba(197, 255, 74, 0.08);
+      background: rgba(197,255,74,0.08);
       color: var(--accent);
     }
 
@@ -422,127 +408,107 @@
 
     .game-card {
       position: relative;
-      min-height: 360px;
+      min-height: 340px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid var(--line);
       border-radius: 8px;
-      background: #111720;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.26);
-      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+      background: var(--panel);
+      transition: transform 180ms ease, border-color 180ms ease;
     }
 
     .game-card:hover {
       transform: translateY(-4px);
       border-color: rgba(197,255,74,0.65);
-      box-shadow: 0 24px 48px rgba(0,0,0,0.36);
     }
 
-    .game-card[hidden] {
-      display: none;
-    }
+    .game-card[hidden] { display: none; }
 
-    .game-card-image {
+    .game-image {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: saturate(0.9);
-      transition: transform 420ms ease;
+      transition: transform 400ms ease;
     }
 
-    .game-card:hover .game-card-image {
-      transform: scale(1.06);
-    }
+    .game-card:hover .game-image { transform: scale(1.05); }
 
     .game-card::after {
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(180deg, rgba(8,11,16,0.1) 0%, rgba(8,11,16,0.12) 30%, rgba(8,11,16,0.84) 70%, rgba(8,11,16,0.96) 100%);
-    }
-
-    .game-card-content {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      min-height: 360px;
-      padding: 20px;
+      background: linear-gradient(180deg, rgba(8,11,16,.12), rgba(8,11,16,.2) 32%, rgba(8,11,16,.96) 100%);
     }
 
     .game-card-top {
       position: absolute;
-      left: 16px;
-      right: 16px;
-      top: 16px;
-      z-index: 2;
+      z-index: 1;
+      inset: 15px 15px auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
     }
 
     .game-icon {
       display: grid;
       place-items: center;
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(255,255,255,0.24);
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,.25);
       border-radius: 50%;
-      background: rgba(8,11,16,0.52);
+      background: rgba(8,11,16,.65);
       font-size: 1.2rem;
-      backdrop-filter: blur(8px);
     }
 
     .game-category {
-      padding: 6px 10px;
-      border: 1px solid rgba(197,255,74,0.38);
+      padding: 5px 9px;
+      border: 1px solid rgba(197,255,74,.4);
       border-radius: 999px;
-      background: rgba(8,11,16,0.62);
+      background: rgba(8,11,16,.72);
       color: var(--accent);
-      font-size: 0.68rem;
+      font-size: .68rem;
       font-weight: 800;
-      letter-spacing: 0.09em;
       text-transform: uppercase;
-      backdrop-filter: blur(8px);
+    }
+
+    .game-card-content {
+      position: absolute;
+      z-index: 1;
+      inset: auto 0 0;
+      padding: 20px;
     }
 
     .game-card h3 {
-      margin: 0 0 8px;
-      font-size: 1.25rem;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
+      margin: 0 0 7px;
+      font-size: 1.22rem;
     }
 
     .game-card p {
       min-height: 44px;
-      margin: 0 0 16px;
+      margin: 0 0 14px;
       color: #c5ced6;
-      font-size: 0.9rem;
-      line-height: 1.5;
+      font-size: .9rem;
     }
 
     .game-card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      padding-top: 13px;
-      border-top: 1px solid rgba(255,255,255,0.16);
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.17);
     }
 
     .game-platform {
-      color: #d5dce2;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      color: #c5ced6;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .08em;
     }
 
-    .game-button {
+    .game-button,
+    .play-button {
       min-height: 38px;
       padding: 0 13px;
       border: 1px solid var(--accent);
@@ -550,55 +516,44 @@
       background: var(--accent);
       color: #10150a;
       cursor: pointer;
-      font: inherit;
-      font-size: 0.78rem;
       font-weight: 800;
-      transition: transform 160ms ease, background 160ms ease;
     }
 
-    .game-button:hover {
-      transform: translateY(-2px);
-      background: #d5ff7b;
-    }
+    .game-button:hover,
+    .play-button:hover { background: #d5ff7b; }
 
+    /* Mini-game dialog */
     .game-dialog {
-      width: min(620px, calc(100% - 28px));
-      max-width: 620px;
+      width: min(640px, calc(100% - 28px));
+      max-width: 640px;
       padding: 0;
-      border: 1px solid rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,.18);
       border-radius: 8px;
       background: #10151d;
       color: var(--text);
-      box-shadow: 0 24px 90px rgba(0,0,0,0.65);
+      box-shadow: 0 24px 90px rgba(0,0,0,.65);
     }
 
     .game-dialog::backdrop {
-      background: rgba(0,0,0,0.76);
+      background: rgba(0,0,0,.78);
       backdrop-filter: blur(5px);
     }
 
-    .dialog-inner {
-      padding: 26px;
-    }
+    .dialog-inner { padding: 24px; }
 
     .dialog-header {
       display: flex;
-      align-items: flex-start;
       justify-content: space-between;
-      gap: 20px;
-      padding-bottom: 16px;
+      gap: 18px;
+      padding-bottom: 14px;
       border-bottom: 1px solid var(--line);
     }
 
-    .dialog-header h2 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
+    .dialog-header h2 { margin: 0; }
 
     .dialog-header p {
-      margin: 4px 0 0;
+      margin: 3px 0 0;
       color: var(--muted);
-      font-size: 0.88rem;
       text-transform: capitalize;
     }
 
@@ -610,195 +565,111 @@
       background: transparent;
       color: var(--text);
       cursor: pointer;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
     }
 
-    .dialog-close:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+    .game-stage { min-height: 250px; padding-top: 18px; }
 
-    .game-stage {
-      min-height: 260px;
-      padding-top: 20px;
-    }
-
-    .game-instructions {
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .game-hud {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-      color: var(--accent);
-      font-weight: 800;
-    }
-
-    .target-area {
-      position: relative;
-      height: 170px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background:
-        radial-gradient(circle at center, rgba(197,255,74,0.08), transparent 58%),
-        #080b10;
-    }
-
-    .target-button {
-      position: absolute;
-      width: 46px;
-      height: 46px;
-      border: 0;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #10150a;
-      font-size: 1.15rem;
-      font-weight: 900;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(197,255,74,0.35);
-    }
-
-    .demo-button,
-    .choice-button {
-      min-height: 42px;
-      padding: 0 14px;
-      border: 1px solid var(--accent);
-      border-radius: 4px;
-      background: var(--accent);
-      color: #10150a;
-      cursor: pointer;
-      font: inherit;
-      font-size: 0.86rem;
-      font-weight: 800;
-    }
-
-    .choice-button {
-      border-color: var(--line);
-      background: #171e28;
-      color: var(--text);
-    }
-
-    .choice-button:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+    .instructions,
+    .game-message { color: var(--muted); }
 
     .game-message {
-      min-height: 26px;
-      margin: 12px 0;
+      min-height: 28px;
       color: var(--accent);
       font-weight: 700;
     }
 
-    .choice-list {
+    .game-row {
       display: flex;
       flex-wrap: wrap;
       gap: 9px;
+      margin: 12px 0;
     }
 
-    .race-track {
+    .game-choice,
+    .game-cell {
+      min-height: 42px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #171e28;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .game-choice:hover,
+    .game-cell:hover,
+    .game-cell.selected {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .game-grid-mini {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      max-width: 300px;
+      margin: 14px 0;
+    }
+
+    .game-cell { min-height: 54px; font-size: 1.1rem; }
+
+    .game-meter {
       height: 24px;
-      margin: 18px 0;
+      overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 999px;
-      overflow: hidden;
       background: #080b10;
+      margin: 14px 0;
     }
 
-    .race-progress {
-      width: 0;
+    .game-meter-fill {
       height: 100%;
+      width: 0;
       background: var(--accent);
-      transition: width 110ms ease;
+      transition: width 120ms linear;
     }
 
-    .build-score {
-      color: var(--accent);
-      font-weight: 800;
+    .game-input {
+      width: min(260px, 100%);
+      min-height: 44px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #080b10;
+      color: var(--text);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
     }
 
     @media (max-width: 900px) {
-      .game-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .game-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 760px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        min-height: 680px;
-        background-position: 58% center;
-      }
-
-      .intro-grid,
-      .systems-layout {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .intro-art {
-        min-height: 280px;
-        grid-row: 1;
-      }
-
-      .feature-grid,
-      .mode-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .game-library-heading {
-        display: block;
-      }
-
-      .game-count {
-        display: inline-block;
-        margin-bottom: 20px;
-      }
+      .nav-links { display: none; }
+      .hero { min-height: 680px; background-position: 58% center; }
+      .intro-grid, .systems-layout { grid-template-columns: 1fr; gap: 30px; }
+      .intro-art { min-height: 280px; grid-row: 1; }
+      .feature-grid, .mode-grid { grid-template-columns: repeat(2, 1fr); }
+      .game-library-heading { display: block; }
+      .game-count { margin: -20px 0 24px; }
     }
 
     @media (max-width: 480px) {
-      .container {
-        width: min(100% - 28px, 1120px);
-      }
-
-      section {
-        padding: 72px 0;
-      }
-
-      .nav-cta {
-        min-height: 40px;
-        padding: 0 12px;
-        font-size: 0.82rem;
-      }
-
-      .feature-grid,
-      .mode-grid,
-      .systems-list,
-      .game-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: 640px;
-      }
-
-      .dialog-inner {
-        padding: 20px;
-      }
+      .container { width: min(100% - 28px, 1120px); }
+      section { padding: 72px 0; }
+      .nav-cta { min-height: 40px; padding: 0 12px; font-size: .82rem; }
+      .feature-grid, .mode-grid, .systems-list, .game-grid { grid-template-columns: 1fr; }
+      .hero { min-height: 640px; }
+      .dialog-inner { padding: 18px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+      *, *::before, *::after {
         scroll-behavior: auto !important;
         transition: none !important;
       }
@@ -810,14 +681,12 @@
   <header class="site-header">
     <nav class="nav container" aria-label="Main navigation">
       <a class="logo" href="#home" aria-label="NEXUS home">NE<span>X</span>US</a>
-
       <div class="nav-links">
         <a href="#world">The World</a>
         <a href="#features">Features</a>
         <a href="#games">Games</a>
         <a href="#vision">Vision</a>
       </div>
-
       <a class="nav-cta" href="#games" id="demo-toggle">Play a Demo</a>
     </nav>
   </header>
@@ -847,21 +716,10 @@
           <p class="eyebrow">Your world, your rules</p>
           <div class="section-heading">
             <h2>One world. Countless ways to play.</h2>
-            <p>
-              NEXUS brings survival, action, exploration, racing, sports, and
-              creativity together in one massive multiplayer experience.
-            </p>
+            <p>NEXUS brings action, survival, exploration, racing, sports, and creativity together in one multiplayer universe.</p>
           </div>
-          <p>
-            Travel from bustling cities to quiet villages, dense forests,
-            sun-scorched deserts, remote islands, and hidden locations.
-            Venture out alone or join friends to explore a world that keeps
-            changing around you.
-          </p>
-          <p>
-            Take on a mission, gather resources, compete for victory, or simply
-            make your own fun. In NEXUS, the next adventure is yours to choose.
-          </p>
+          <p>Travel from bustling cities to quiet villages, dense forests, sun-scorched deserts, remote islands, and hidden locations.</p>
+          <p>Take on a mission, gather resources, compete for victory, or make your own fun. The next adventure is yours to choose.</p>
         </div>
         <div class="intro-art" role="img" aria-label="A scenic wilderness landscape"></div>
       </div>
@@ -872,43 +730,15 @@
         <div class="section-heading">
           <p class="eyebrow">Built for every kind of player</p>
           <h2>A world of possibilities</h2>
-          <p>
-            Jump between different experiences while staying in the same
-            connected universe.
-          </p>
+          <p>Jump between different experiences while staying in the same connected universe.</p>
         </div>
-
         <div class="feature-grid">
-          <article class="feature-card">
-            <span class="number">01 / EXPLORE</span>
-            <h3>Open World</h3>
-            <p>Discover cities, villages, forests, oceans, mountains, and hidden places.</p>
-          </article>
-          <article class="feature-card">
-            <span class="number">02 / COMPETE</span>
-            <h3>Battle Royale</h3>
-            <p>Enter the arena, outlast your rivals, and fight to be the last survivor.</p>
-          </article>
-          <article class="feature-card">
-            <span class="number">03 / SURVIVE</span>
-            <h3>Survival &amp; Crafting</h3>
-            <p>Gather resources, craft useful gear, and build shelter in the wild.</p>
-          </article>
-          <article class="feature-card">
-            <span class="number">04 / RACE</span>
-            <h3>Vehicles</h3>
-            <p>Take cars, bikes, trucks, and other vehicles across the world.</p>
-          </article>
-          <article class="feature-card">
-            <span class="number">05 / CREATE</span>
-            <h3>Sandbox Building</h3>
-            <p>Build houses, shape environments, and make a space of your own.</p>
-          </article>
-          <article class="feature-card">
-            <span class="number">06 / CONNECT</span>
-            <h3>Play Together</h3>
-            <p>Team up with friends or meet players from around the world.</p>
-          </article>
+          <article class="feature-card"><span class="number">01 / EXPLORE</span><h3>Open World</h3><p>Discover cities, forests, oceans, mountains, and hidden places.</p></article>
+          <article class="feature-card"><span class="number">02 / COMPETE</span><h3>Battle Royale</h3><p>Enter the arena and fight to be the last survivor.</p></article>
+          <article class="feature-card"><span class="number">03 / SURVIVE</span><h3>Survival &amp; Crafting</h3><p>Gather resources, craft gear, and build shelter.</p></article>
+          <article class="feature-card"><span class="number">04 / RACE</span><h3>Vehicles</h3><p>Take cars, bikes, and trucks across the world.</p></article>
+          <article class="feature-card"><span class="number">05 / CREATE</span><h3>Sandbox Building</h3><p>Build houses and make a space of your own.</p></article>
+          <article class="feature-card"><span class="number">06 / CONNECT</span><h3>Play Together</h3><p>Team up with friends or meet players around the world.</p></article>
         </div>
       </div>
     </section>
@@ -918,24 +748,24 @@
         <div class="game-library-heading">
           <div class="section-heading">
             <p class="eyebrow">The NEXUS game library</p>
-            <h2>Pick your next adventure.</h2>
-            <p>50 distinct games across 10 categories. Filter and play.</p>
+            <h2>Choose your next game.</h2>
+            <p>30 different game demos. Har card apne alag gameplay challenge ke saath.</p>
           </div>
-          <span class="game-count" id="game-count">50 GAMES</span>
+          <span class="game-count" id="game-count">30 GAMES</span>
         </div>
 
         <div class="game-filters" role="group" aria-label="Filter games by category">
-          <button class="filter-button" type="button" data-filter="all" aria-pressed="true">All games</button>
-          <button class="filter-button" type="button" data-filter="action" aria-pressed="false">Action</button>
-          <button class="filter-button" type="button" data-filter="tactical" aria-pressed="false">Tactical</button>
-          <button class="filter-button" type="button" data-filter="shooter" aria-pressed="false">Shooter</button>
-          <button class="filter-button" type="button" data-filter="survival" aria-pressed="false">Survival</button>
-          <button class="filter-button" type="button" data-filter="adventure" aria-pressed="false">Adventure</button>
-          <button class="filter-button" type="button" data-filter="horror" aria-pressed="false">Horror</button>
-          <button class="filter-button" type="button" data-filter="funny" aria-pressed="false">Funny</button>
-          <button class="filter-button" type="button" data-filter="racing" aria-pressed="false">Racing</button>
-          <button class="filter-button" type="button" data-filter="creative" aria-pressed="false">Creative</button>
-          <button class="filter-button" type="button" data-filter="sports" aria-pressed="false">Sports</button>
+          <button class="filter-button" data-filter="all" aria-pressed="true">All games</button>
+          <button class="filter-button" data-filter="action" aria-pressed="false">Action</button>
+          <button class="filter-button" data-filter="tactical" aria-pressed="false">Tactical</button>
+          <button class="filter-button" data-filter="shooter" aria-pressed="false">Shooter</button>
+          <button class="filter-button" data-filter="survival" aria-pressed="false">Survival</button>
+          <button class="filter-button" data-filter="adventure" aria-pressed="false">Adventure</button>
+          <button class="filter-button" data-filter="horror" aria-pressed="false">Horror</button>
+          <button class="filter-button" data-filter="funny" aria-pressed="false">Funny</button>
+          <button class="filter-button" data-filter="racing" aria-pressed="false">Racing</button>
+          <button class="filter-button" data-filter="creative" aria-pressed="false">Creative</button>
+          <button class="filter-button" data-filter="sports" aria-pressed="false">Sports</button>
         </div>
 
         <div class="game-grid" id="game-grid" aria-live="polite"></div>
@@ -949,48 +779,13 @@
           <h2>Game modes</h2>
           <p>Switch up the pace whenever you want a new challenge.</p>
         </div>
-
         <div class="mode-grid">
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⌖</span>
-            <h3>Battle Royale</h3>
-            <p>Be the last player standing.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">▧</span>
-            <h3>Survival</h3>
-            <p>Gather, craft, build, and endure.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⇄</span>
-            <h3>Team Deathmatch</h3>
-            <p>Join a team and compete in fast-paced battles.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">➤</span>
-            <h3>Racing</h3>
-            <p>Race vehicles across courses and open terrain.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">✦</span>
-            <h3>Adventure</h3>
-            <p>Complete story missions and uncover secrets.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⌂</span>
-            <h3>Sandbox</h3>
-            <p>Build freely and create your own world.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">◎</span>
-            <h3>Sports</h3>
-            <p>Play football, cricket, and more with friends.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">◉</span>
-            <h3>Free Roam</h3>
-            <p>Explore at your own pace, without restrictions.</p>
-          </article>
+          <article class="mode-card"><span class="mode-icon">⌖</span><h3>Battle Royale</h3><p>Be the last player standing.</p></article>
+          <article class="mode-card"><span class="mode-icon">▧</span><h3>Survival</h3><p>Gather, craft, build, and endure.</p></article>
+          <article class="mode-card"><span class="mode-icon">⇄</span><h3>Team Battles</h3><p>Join a team and compete in fast-paced matches.</p></article>
+          <article class="mode-card"><span class="mode-icon">➤</span><h3>Racing</h3><p>Race vehicles across courses and open terrain.</p></article>
+          <article class="mode-card"><span class="mode-icon">✦</span><h3>Adventure</h3><p>Complete missions and uncover secrets.</p></article>
+          <article class="mode-card"><span class="mode-icon">⌂</span><h3>Sandbox</h3><p>Build freely and create your own world.</p></article>
         </div>
       </div>
     </section>
@@ -1000,23 +795,14 @@
         <div class="section-heading">
           <p class="eyebrow">A living universe</p>
           <h2>The world keeps moving.</h2>
-          <p>
-            Dynamic systems and social features make every session feel like
-            part of a larger adventure.
-          </p>
+          <p>Dynamic systems and social features make every session feel like part of a larger adventure.</p>
         </div>
-
         <ul class="systems-list">
-          <li>Dynamic day-and-night cycle</li>
-          <li>Changing weather conditions</li>
-          <li>Multiple maps and environments</li>
-          <li>In-game economy and trading</li>
-          <li>Character progression</li>
-          <li>Achievements and rewards</li>
-          <li>Voice and text chat</li>
-          <li>Private rooms and custom matches</li>
-          <li>Character and outfit customization</li>
-          <li>Regular events and seasonal updates</li>
+          <li>Dynamic day-and-night cycle</li><li>Changing weather conditions</li>
+          <li>Multiple maps and environments</li><li>In-game economy and trading</li>
+          <li>Character progression</li><li>Achievements and rewards</li>
+          <li>Voice and text chat</li><li>Private rooms and custom matches</li>
+          <li>Character and outfit customization</li><li>Regular events and seasonal updates</li>
         </ul>
       </div>
     </section>
@@ -1024,13 +810,8 @@
     <section class="vision" id="vision">
       <div class="container">
         <p class="eyebrow">The NEXUS vision</p>
-        <blockquote>
-          “Explore, compete, build, race, survive, and play—together in one world.”
-        </blockquote>
-        <p>
-          NEXUS is an all-in-one gaming universe for players who want the freedom
-          to choose their own adventure and share it with friends.
-        </p>
+        <blockquote>“Explore, compete, build, race, survive, and play—together in one world.”</blockquote>
+        <p>NEXUS is an all-in-one gaming universe for players who want the freedom to choose their own adventure and share it with friends.</p>
       </div>
     </section>
 
@@ -1053,10 +834,7 @@
   <dialog class="game-dialog" id="game-dialog" aria-labelledby="dialog-title">
     <div class="dialog-inner">
       <div class="dialog-header">
-        <div>
-          <h2 id="dialog-title">Game demo</h2>
-          <p id="dialog-category">NEXUS mini-game</p>
-        </div>
+        <div><h2 id="dialog-title">Game</h2><p id="dialog-category"></p></div>
         <button class="dialog-close" id="dialog-close" type="button" aria-label="Close game">×</button>
       </div>
       <div class="game-stage" id="game-stage"></div>
@@ -1064,99 +842,70 @@
   </dialog>
 
   <script>
-    const image = (id) =>
-      `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=80`;
+    const photo = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=80`;
 
+    /*
+      Har entry ka `id` alag hai aur startDemo() mein uska apna gameplay hai.
+      Images internet se load hoti hain; original hero background same hai.
+    */
     const games = [
-      { title: "Neon Strike", category: "action", icon: "⚔", mode: "targets", image: image("photo-1519608487953-e999c86e7455"), description: "Hit moving targets in a fast arena challenge." },
-      { title: "Iron Circuit", category: "action", icon: "🔧", mode: "targets", image: image("photo-1500534623283-312aade485b7"), description: "Sprint through a danger-filled obstacle run." },
-      { title: "Shadow Hunt", category: "action", icon: "🏃", mode: "targets", image: image("photo-1500530855697-b586d89ba3ee"), description: "Track enemies across a dangerous open field." },
-      { title: "Vortex Run", category: "action", icon: "🌀", mode: "targets", image: image("photo-1464822759023-fed622ff2c3b"), description: "Dodge hazards and keep moving under pressure." },
-      { title: "Bladebound", category: "action", icon: "🗡️", mode: "targets", image: image("photo-1501785888041-af3ef285b470"), description: "Quick reactions decide victory in this duel." },
+      { id:"target", title:"Neon Strike", category:"action", icon:"✦", image:photo("photo-1519608487953-e999c86e7455"), description:"Moving target ko 15 seconds mein jitni baar ho sake hit karo." },
+      { id:"dodge", title:"Vortex Run", category:"action", icon:"🌀", image:photo("photo-1464822759023-fed622ff2c3b"), description:"Lane badal kar girte hazards se bacho." },
+      { id:"reaction", title:"Bladebound", category:"action", icon:"⚔", image:photo("photo-1501785888041-af3ef285b470"), description:"Signal green hote hi click karo—jaldi click kiya to foul." },
 
-      { title: "Ghost Protocol", category: "tactical", icon: "⌖", mode: "choices", image: image("photo-1511497584788-876760111969"), description: "Choose the right path through hostile territory." },
-      { title: "Iron Vanguard", category: "tactical", icon: "🛡️", mode: "choices", image: image("photo-1519681393784-d120267933ba"), description: "Command your squad through tactical objectives." },
-      { title: "Crossfire Tactics", category: "tactical", icon: "⚑", mode: "choices", image: image("photo-1464822759023-fed622ff2c3b"), description: "Hold your ground and outsmart the enemy." },
-      { title: "Steel Signal", category: "tactical", icon: "📡", mode: "choices", image: image("photo-1500530855697-b586d89ba3ee"), description: "Gather intel and make the safest move." },
-      { title: "Silent Protocol", category: "tactical", icon: "♟", mode: "choices", image: image("photo-1470770841072-f978cf4d019e"), description: "Use stealth and timing for a clean escape." },
+      { id:"code", title:"Ghost Protocol", category:"tactical", icon:"⌖", image:photo("photo-1511497584788-876760111969"), description:"Clues se 3-digit security code crack karo." },
+      { id:"route", title:"Crossfire Tactics", category:"tactical", icon:"⚑", image:photo("photo-1500530855697-b586d89ba3ee"), description:"Squad ko checkpoints tak pahunchane ka sahi route chuno." },
+      { id:"loadout", title:"Iron Vanguard", category:"tactical", icon:"🛡", image:photo("photo-1519681393784-d120267933ba"), description:"Limited points mein mission ke liye loadout tayyar karo." },
 
-      { title: "Zero Hour", category: "shooter", icon: "✦", mode: "targets", image: image("photo-1519608487953-e999c86e7455"), description: "Rapid-fire target challenge under pressure." },
-      { title: "Redline Fire", category: "shooter", icon: "🔥", mode: "targets", image: image("photo-1500534623283-312aade485b7"), description: "Take precise shots in a high-pressure arena." },
-      { title: "Rift Breakers", category: "shooter", icon: "💥", mode: "targets", image: image("photo-1519681393784-d120267933ba"), description: "Clear danger zones before the timer ends." },
-      { title: "Arctic Storm", category: "shooter", icon: "❄️", mode: "targets", image: image("photo-1464822759023-fed622ff2c3b"), description: "Fight through a frozen combat zone." },
-      { title: "Skyfall Squad", category: "shooter", icon: "☄️", mode: "targets", image: image("photo-1501785888041-af3ef285b470"), description: "React quickly in a changing battle arena." },
+      { id:"aim", title:"Zero Hour", category:"shooter", icon:"◎", image:photo("photo-1519608487953-e999c86e7455"), description:"Grid mein chhupe target ka sahi coordinate choose karo." },
+      { id:"reload", title:"Redline Fire", category:"shooter", icon:"▰", image:photo("photo-1500534623283-312aade485b7"), description:"Reload meter green zone mein ho tab fire karo." },
+      { id:"sequence", title:"Rift Breakers", category:"shooter", icon:"✹", image:photo("photo-1519681393784-d120267933ba"), description:"Targets ke order ko yaad karke wahi sequence repeat karo." },
 
-      { title: "Wild Frontier", category: "survival", icon: "🌲", mode: "choices", image: image("photo-1470770841072-f978cf4d019e"), description: "Find supplies and survive a dangerous wilderness." },
-      { title: "Last Shelter", category: "survival", icon: "⌂", mode: "choices", image: image("photo-1448375240586-882707db888b"), description: "Build a strong base and survive the night." },
-      { title: "Castaway", category: "survival", icon: "⚓", mode: "choices", image: image("photo-1500375592092-40eb2168fd21"), description: "Gather resources on an island and stay alive." },
-      { title: "Frostline", category: "survival", icon: "❄️", mode: "choices", image: image("photo-1519681393784-d120267933ba"), description: "Stay warm while surviving the frozen frontier." },
-      { title: "Greenfall", category: "survival", icon: "🍃", mode: "choices", image: image("photo-1511497584788-876760111969"), description: "Explore a dense jungle and prepare for danger." },
+      { id:"resources", title:"Wild Frontier", category:"survival", icon:"🌲", image:photo("photo-1470770841072-f978cf4d019e"), description:"Food, water aur rest ko manage karke 5 din survive karo." },
+      { id:"shelter", title:"Last Shelter", category:"survival", icon:"⌂", image:photo("photo-1448375240586-882707db888b"), description:"Har weather ke liye sahi shelter material chuno." },
+      { id:"craft", title:"Castaway", category:"survival", icon:"⚓", image:photo("photo-1500375592092-40eb2168fd21"), description:"Sahi recipe ingredients mila kar fishing tool craft karo." },
 
-      { title: "Lost Horizon", category: "adventure", icon: "🌄", mode: "choices", image: image("photo-1464822759023-fed622ff2c3b"), description: "Follow ancient clues through a forgotten kingdom." },
-      { title: "Beyond the Map", category: "adventure", icon: "🧭", mode: "choices", image: image("photo-1500530855697-b586d89ba3ee"), description: "Choose the route across an uncharted world." },
-      { title: "Deep Unknown", category: "adventure", icon: "🌊", mode: "choices", image: image("photo-1500375592092-40eb2168fd21"), description: "Uncover the secrets hidden across a coastline." },
-      { title: "Ruins of Eryx", category: "adventure", icon: "🏛️", mode: "choices", image: image("photo-1470770841072-f978cf4d019e"), description: "Explore forgotten ruins and solve a mystery." },
-      { title: "The Sky Isles", category: "adventure", icon: "☁️", mode: "choices", image: image("photo-1501785888041-af3ef285b470"), description: "Travel between distant peaks on a grand journey." },
+      { id:"riddle", title:"Lost Horizon", category:"adventure", icon:"◇", image:photo("photo-1464822759023-fed622ff2c3b"), description:"Ancient riddle solve karke hidden gate kholo." },
+      { id:"map", title:"Beyond the Map", category:"adventure", icon:"🧭", image:photo("photo-1500530855697-b586d89ba3ee"), description:"Map ke clues se treasure tak pahunchne ka raasta chuno." },
+      { id:"inventory", title:"Ruins of Eryx", category:"adventure", icon:"🏛", image:photo("photo-1470770841072-f978cf4d019e"), description:"Collected objects ko sahi order mein use karke puzzle solve karo." },
 
-      { title: "Whispering Pines", category: "horror", icon: "☾", mode: "targets", image: image("photo-1511497584788-876760111969"), description: "Move carefully through a forest that breathes." },
-      { title: "Silent Ward", category: "horror", icon: "👁️", mode: "choices", image: image("photo-1519608487953-e999c86e7455"), description: "Search a deserted place and survive the night." },
-      { title: "Night Shift", category: "horror", icon: "🌙", mode: "targets", image: image("photo-1519681393784-d120267933ba"), description: "Stay alert and survive the longest night." },
-      { title: "The Hollow House", category: "horror", icon: "🏚️", mode: "choices", image: image("photo-1448375240586-882707db888b"), description: "Search a haunted house for hidden truths." },
-      { title: "Blackwater", category: "horror", icon: "🌫️", mode: "targets", image: image("photo-1500375592092-40eb2168fd21"), description: "Watch the dark waters and react before it’s too late." },
+      { id:"memory", title:"Whispering Pines", category:"horror", icon:"☾", image:photo("photo-1511497584788-876760111969"), description:"Lights ka pattern yaad rakho aur wahi sequence repeat karo." },
+      { id:"doors", title:"The Hollow House", category:"horror", icon:"🚪", image:photo("photo-1448375240586-882707db888b"), description:"Clues padho aur safe door choose karke haunted house se niklo." },
+      { id:"spot", title:"Blackwater", category:"horror", icon:"👁", image:photo("photo-1500375592092-40eb2168fd21"), description:"Room mein badli hui cheez ko timer khatam hone se pehle dhoondo." },
 
-      { title: "Goose on the Loose", category: "funny", icon: "🦆", mode: "targets", image: image("photo-1500530855697-b586d89ba3ee"), description: "Catch the runaway goose before the chaos spreads." },
-      { title: "Wobbly Warriors", category: "funny", icon: "☻", mode: "targets", image: image("photo-1470770841072-f978cf4d019e"), description: "Keep up with wobbling characters in a silly challenge." },
-      { title: "Kitchen Dash", category: "funny", icon: "🍽️", mode: "choices", image: image("photo-1500375592092-40eb2168fd21"), description: "Serve a chaotic dinner before disaster strikes." },
-      { title: "Banana Blitz", category: "funny", icon: "🍌", mode: "race", image: image("photo-1501785888041-af3ef285b470"), description: "Race through a slippery map full of laughs." },
-      { title: "Laundry Legends", category: "funny", icon: "🧦", mode: "targets", image: image("photo-1511497584788-876760111969"), description: "Catch flying socks in a ridiculous laundry battle." },
+      { id:"catch", title:"Goose on the Loose", category:"funny", icon:"🦆", image:photo("photo-1500530855697-b586d89ba3ee"), description:"Sirf goose pakdo—decoy ducks ko click mat karna." },
+      { id:"balance", title:"Wobbly Warriors", category:"funny", icon:"☻", image:photo("photo-1470770841072-f978cf4d019e"), description:"Left/right buttons se wobbly hero ko platform par balance karo." },
+      { id:"recipe", title:"Kitchen Dash", category:"funny", icon:"🍲", image:photo("photo-1500375592092-40eb2168fd21"), description:"Silly order ke ingredients sahi sequence mein serve karo." },
 
-      { title: "Neon Rush", category: "racing", icon: "🏎️", mode: "race", image: image("photo-1500534623283-312aade485b7"), description: "Speed through a luminous night circuit." },
-      { title: "Trailblazer Rally", category: "racing", icon: "🚙", mode: "race", image: image("photo-1501785888041-af3ef285b470"), description: "Race across mountain roads and rough terrain." },
-      { title: "Midnight Drift", category: "racing", icon: "🌃", mode: "race", image: image("photo-1519608487953-e999c86e7455"), description: "Drift around a dramatic night-time course." },
-      { title: "Turbo Dunes", category: "racing", icon: "🏜️", mode: "race", image: image("photo-1500530855697-b586d89ba3ee"), description: "Blast through dessert tracks and sandy turns." },
-      { title: "Coastline Sprint", category: "racing", icon: "🌊", mode: "race", image: image("photo-1500375592092-40eb2168fd21"), description: "Race beside the water on a coastal loop." },
+      { id:"race", title:"Neon Rush", category:"racing", icon:"🏎", image:photo("photo-1500534623283-312aade485b7"), description:"Accelerate karke finish line tak race karo." },
+      { id:"lanes", title:"Trailblazer Rally", category:"racing", icon:"🚙", image:photo("photo-1501785888041-af3ef285b470"), description:"Three-lane track par obstacles se bachte hue finish karo." },
+      { id:"gears", title:"Midnight Drift", category:"racing", icon:"⚙", image:photo("photo-1519608487953-e999c86e7455"), description:"Speed bar sweet spot mein ho tab gear shift karo." },
 
-      { title: "Build Beyond", category: "creative", icon: "🏠", mode: "build", image: image("photo-1448375240586-882707db888b"), description: "Build a personal retreat in the middle of nature." },
-      { title: "World Makers", category: "creative", icon: "🧱", mode: "build", image: image("photo-1470770841072-f978cf4d019e"), description: "Shape your landscape one piece at a time." },
-      { title: "Pixel Studio", category: "creative", icon: "🎨", mode: "build", image: image("photo-1501785888041-af3ef285b470"), description: "Create a colorful world from your imagination." },
-      { title: "Dream Forge", category: "creative", icon: "✨", mode: "build", image: image("photo-1464822759023-fed622ff2c3b"), description: "Design a magical place with your own style." },
-      { title: "Garden Galaxy", category: "creative", icon: "🌱", mode: "build", image: image("photo-1511497584788-876760111969"), description: "Create a peaceful garden in a world of your own." },
+      { id:"blueprint", title:"Build Beyond", category:"creative", icon:"🏠", image:photo("photo-1448375240586-882707db888b"), description:"Blueprint ke hisaab se building pieces sahi order mein lagao." },
+      { id:"pixel", title:"Pixel Studio", category:"creative", icon:"🎨", image:photo("photo-1470770841072-f978cf4d019e"), description:"Target pattern ke matching pixels grid mein paint karo." },
+      { id:"garden", title:"Garden Galaxy", category:"creative", icon:"🌱", image:photo("photo-1511497584788-876760111969"), description:"Water, seeds aur sunlight balance karke garden grow karo." },
 
-      { title: "Goal Rush", category: "sports", icon: "⚽", mode: "sports", image: image("photo-1500530855697-b586d89ba3ee"), description: "Score as many goals as possible quickly." },
-      { title: "Penalty Stars", category: "sports", icon: "🥅", mode: "sports", image: image("photo-1501785888041-af3ef285b470"), description: "Take penalty shots and beat the keeper." },
-      { title: "Court Clash", category: "sports", icon: "🏀", mode: "sports", image: image("photo-1500534623283-312aade485b7"), description: "Quick, competitive shots in a fast court match." },
-      { title: "Racket Rally", category: "sports", icon: "🎾", mode: "sports", image: image("photo-1470770841072-f978cf4d019e"), description: "Place your shot and win the point." },
-      { title: "Cricket Kings", category: "sports", icon: "🏏", mode: "sports", image: image("photo-1500530855697-b586d89ba3ee"), description: "Time your shot and score runs in a mini match." }
+      { id:"penalty", title:"Penalty Stars", category:"sports", icon:"⚽", image:photo("photo-1500530855697-b586d89ba3ee"), description:"Goal ke left, center ya right corner mein penalty shoot karo." },
+      { id:"hoop", title:"Court Clash", category:"sports", icon:"🏀", image:photo("photo-1501785888041-af3ef285b470"), description:"Power meter ko sahi point par rok kar basketball shot lo." },
+      { id:"cricket", title:"Cricket Kings", category:"sports", icon:"🏏", image:photo("photo-1500534623283-312aade485b7"), description:"Ball ka timing dekh kar swing karo aur runs banao." }
     ];
 
-    const gameGrid = document.getElementById("game-grid");
-    const gameCount = document.getElementById("game-count");
-    const filterButtons = document.querySelectorAll(".filter-button");
-    const demoToggle = document.getElementById("demo-toggle");
+    const grid = document.getElementById("game-grid");
+    const count = document.getElementById("game-count");
     const dialog = document.getElementById("game-dialog");
-    const dialogTitle = document.getElementById("dialog-title");
-    const dialogCategory = document.getElementById("dialog-category");
-    const gameStage = document.getElementById("game-stage");
-    const dialogClose = document.getElementById("dialog-close");
-
-    let demoModeEnabled = false;
-    let activeTimer = null;
+    const stage = document.getElementById("game-stage");
+    const title = document.getElementById("dialog-title");
+    const category = document.getElementById("dialog-category");
+    let demoMode = false;
+    let timer = null;
 
     function renderGames(filter = "all") {
-      const visibleGames = games.filter((game) =>
-        filter === "all" || game.category === filter
-      );
+      const shown = games.filter(game => filter === "all" || game.category === filter);
+      count.textContent = `${shown.length} GAMES`;
 
-      gameCount.textContent = `${visibleGames.length} ${visibleGames.length === 1 ? "GAME" : "GAMES"}`;
-
-      gameGrid.innerHTML = visibleGames.map((game) => `
+      grid.innerHTML = shown.map(game => `
         <article class="game-card">
-          <img
-            class="game-card-image"
-            src="${game.image}"
-            alt="${game.title}"
-            loading="lazy"
-          >
+          <img class="game-image" src="${game.image}" alt="${game.title}" loading="lazy">
           <div class="game-card-top">
             <span class="game-icon" aria-hidden="true">${game.icon}</span>
             <span class="game-category">${game.category}</span>
@@ -1165,334 +914,500 @@
             <h3>${game.title}</h3>
             <p>${game.description}</p>
             <div class="game-card-footer">
-              <span class="game-platform">NEXUS</span>
-              <button class="game-button" type="button" data-game-title="${game.title}">
-                ${demoModeEnabled ? "Play a Demo" : "Play a Game"}
+              <span class="game-platform">NEXUS GAME</span>
+              <button class="game-button" type="button" data-id="${game.id}">
+                ${demoMode ? "Play a Demo" : "Play a Game"}
               </button>
             </div>
           </div>
         </article>
       `).join("");
 
-      document.querySelectorAll(".game-button").forEach((button) => {
+      grid.querySelectorAll(".game-button").forEach(button => {
         button.addEventListener("click", () => {
-          const selected = games.find((game) => game.title === button.dataset.gameTitle);
-          if (selected) openGame(selected);
+          const game = games.find(item => item.id === button.dataset.id);
+          launch(game);
         });
       });
     }
 
-    filterButtons.forEach((button) => {
+    document.querySelectorAll(".filter-button").forEach(button => {
       button.addEventListener("click", () => {
-        filterButtons.forEach((btn) => {
-          btn.setAttribute("aria-pressed", String(btn === button));
-        });
+        document.querySelectorAll(".filter-button").forEach(item =>
+          item.setAttribute("aria-pressed", String(item === button))
+        );
         renderGames(button.dataset.filter);
       });
     });
 
-    demoToggle.addEventListener("click", (event) => {
+    document.getElementById("demo-toggle").addEventListener("click", event => {
       event.preventDefault();
-      demoModeEnabled = true;
-      const selectedFilter =
-        document.querySelector(".filter-button[aria-pressed='true']")?.dataset.filter || "all";
-      renderGames(selectedFilter);
+      demoMode = true;
+      const active = document.querySelector(".filter-button[aria-pressed='true']");
+      renderGames(active?.dataset.filter || "all");
       document.getElementById("games").scrollIntoView({ behavior: "smooth" });
     });
 
     function stopTimer() {
-      if (activeTimer) {
-        clearInterval(activeTimer);
-        activeTimer = null;
-      }
+      if (timer) clearInterval(timer);
+      timer = null;
     }
 
-    function openGame(game) {
+    function shell(instructions, content) {
+      stage.innerHTML = `<p class="instructions">${instructions}</p>${content}<p class="game-message" id="message"></p>`;
+    }
+
+    function message(text) {
+      const node = document.getElementById("message");
+      if (node) node.textContent = text;
+    }
+
+    function button(text, action, className = "game-choice") {
+      const el = document.createElement("button");
+      el.type = "button";
+      el.className = className;
+      el.textContent = text;
+      el.addEventListener("click", action);
+      return el;
+    }
+
+    function launch(game) {
       stopTimer();
-      dialogTitle.textContent = game.title;
-      dialogCategory.textContent = `${game.category} mini-game`;
-
-      if (game.mode === "race") {
-        startRace();
-      } else if (game.mode === "sports") {
-        startSports();
-      } else if (game.mode === "build") {
-        startBuild();
-      } else if (game.mode === "choices") {
-        startChoices();
-      } else {
-        startTargets();
-      }
-
-      dialog.showModal();
+      title.textContent = game.title;
+      category.textContent = `${game.category} · unique mini-game`;
+      if (!dialog.open) dialog.showModal();
+      startDemo(game.id);
     }
 
-    function startTargets() {
-      let score = 0;
-      let seconds = 15;
+    function startDemo(id) {
+      stopTimer();
 
-      gameStage.innerHTML = `
-        <p class="game-instructions">Click the glowing target as many times as you can in 15 seconds.</p>
-        <div class="game-hud">
-          <span>Score: <strong id="target-score">0</strong></span>
-          <span>Time: <strong id="target-time">15</strong>s</span>
-        </div>
-        <div class="target-area" id="target-area">
-          <button class="target-button" id="target-button" type="button" aria-label="Hit the target">✦</button>
-        </div>
-        <p class="game-message" id="target-message">Ready? Start clicking!</p>
-        <button class="demo-button" id="target-restart" type="button">Restart</button>
-      `;
-
-      const area = document.getElementById("target-area");
-      const target = document.getElementById("target-button");
-      const scoreDisplay = document.getElementById("target-score");
-      const timeDisplay = document.getElementById("target-time");
-      const message = document.getElementById("target-message");
-
-      function moveTarget() {
-        const maxX = Math.max(0, area.clientWidth - target.offsetWidth);
-        const maxY = Math.max(0, area.clientHeight - target.offsetHeight);
-        target.style.left = `${Math.random() * maxX}px`;
-        target.style.top = `${Math.random() * maxY}px`;
+      if (id === "target") {
+        let score = 0, seconds = 12;
+        shell("Hit the glowing target before time runs out.",
+          `<div class="game-hud"><span>Score: <b id="score">0</b></span><span>Time: <b id="time">12</b>s</span></div><div class="target-area" id="arena"><button class="target-button" id="target">✦</button></div>`);
+        const arena = document.getElementById("arena"), target = document.getElementById("target");
+        const move = () => {
+          target.style.left = Math.random() * Math.max(0, arena.clientWidth - 46) + "px";
+          target.style.top = Math.random() * Math.max(0, arena.clientHeight - 46) + "px";
+        };
+        target.onclick = () => { score++; document.getElementById("score").textContent = score; move(); };
+        move();
+        timer = setInterval(() => {
+          seconds--;
+          document.getElementById("time").textContent = seconds;
+          if (!seconds) { stopTimer(); target.disabled = true; message(`Time! Final score: ${score}`); }
+        }, 1000);
       }
 
-      target.addEventListener("click", () => {
-        if (seconds <= 0) return;
-        score += 1;
-        scoreDisplay.textContent = score;
-        moveTarget();
-      });
-
-      document.getElementById("target-restart").addEventListener("click", startTargets);
-
-      moveTarget();
-
-      activeTimer = setInterval(() => {
-        seconds -= 1;
-        timeDisplay.textContent = seconds;
-
-        if (seconds <= 0) {
-          stopTimer();
-          target.disabled = true;
-          message.textContent = `Time's up! You scored ${score}.`;
-        }
-      }, 1000);
-    }
-
-    function startRace() {
-      let progress = 0;
-
-      gameStage.innerHTML = `
-        <p class="game-instructions">Tap to accelerate and finish the race.</p>
-        <div class="game-hud">
-          <span>Race progress</span>
-          <span id="race-percent">0%</span>
-        </div>
-        <div class="race-track"><div class="race-progress" id="race-progress"></div></div>
-        <p class="game-message" id="race-message">Ready at the start.</p>
-        <button class="demo-button" id="accelerate-button" type="button">Accelerate!</button>
-        <button class="choice-button" id="race-restart" type="button">Restart</button>
-      `;
-
-      const progressBar = document.getElementById("race-progress");
-      const percentage = document.getElementById("race-percent");
-      const message = document.getElementById("race-message");
-      const accelerate = document.getElementById("accelerate-button");
-
-      accelerate.addEventListener("click", () => {
-        if (progress >= 100) return;
-
-        progress = Math.min(100, progress + 10 + Math.floor(Math.random() * 12));
-        progressBar.style.width = `${progress}%`;
-        percentage.textContent = `${progress}%`;
-
-        if (progress >= 100) {
-          message.textContent = "Finish line! You won the race!";
-          accelerate.disabled = true;
-        } else {
-          message.textContent = "Keep accelerating!";
-        }
-      });
-
-      document.getElementById("race-restart").addEventListener("click", startRace);
-    }
-
-    function startSports() {
-      const zones = ["Left", "Center", "Right"];
-      let goal = zones[Math.floor(Math.random() * zones.length)];
-      let score = 0;
-      let attempts = 8;
-
-      gameStage.innerHTML = `
-        <p class="game-instructions">Aim for the highlighted zone. You have 8 shots.</p>
-        <div class="game-hud">
-          <span>Goals: <strong id="sports-score">0</strong></span>
-          <span>Shots left: <strong id="sports-attempts">8</strong></span>
-        </div>
-        <p class="game-message" id="sports-message"></p>
-        <div class="choice-list">
-          <button class="choice-button" type="button" data-zone="Left">Left</button>
-          <button class="choice-button" type="button" data-zone="Center">Center</button>
-          <button class="choice-button" type="button" data-zone="Right">Right</button>
-        </div>
-        <p><button class="choice-button" id="sports-restart" type="button">Restart</button></p>
-      `;
-
-      const message = document.getElementById("sports-message");
-
-      function setGoal() {
-        goal = zones[Math.floor(Math.random() * zones.length)];
-        message.textContent = `Aim for the ${goal.toLowerCase()} zone!`;
+      if (id === "dodge") {
+        let lane = 1, obstacle = Math.floor(Math.random() * 3), score = 0;
+        shell("Move lanes. Avoid the red hazard; survive 8 turns.",
+          `<div class="game-hud"><span>Safe turns: <b id="score">0</b>/8</span><span>Lane: <b id="lane">2</b></span></div><div class="game-row" id="lanes"></div>`);
+        const draw = () => {
+          const row = document.getElementById("lanes"); row.innerHTML = "";
+          for (let i=0;i<3;i++) row.append(button(i === obstacle ? "☄ HAZARD" : `Lane ${i+1}`, () => {
+            lane=i; document.getElementById("lane").textContent=i+1;
+            if (lane === obstacle) { message("Crash! Try again."); score=0; }
+            else { score++; message("Clear!"); }
+            document.getElementById("score").textContent=Math.min(score,8);
+            obstacle=Math.floor(Math.random()*3);
+            if(score>=8) message("You dodged the full course!");
+          }));
+        };
+        draw();
       }
 
-      gameStage.querySelectorAll("[data-zone]").forEach((button) => {
-        button.addEventListener("click", () => {
-          if (attempts <= 0) return;
+      if (id === "reaction") {
+        shell("Wait for GO, then click once. Clicking early is a foul.",
+          `<button class="play-button" id="go">Wait for signal…</button><p id="result"></p>`);
+        const go=document.getElementById("go"), result=document.getElementById("result");
+        let ready=false, start=0;
+        go.onclick=()=>{
+          if(!ready){result.textContent="Too early! Refresh the demo to retry.";go.disabled=true;return;}
+          result.textContent=`Reaction time: ${Date.now()-start} ms`;
+          go.disabled=true;
+        };
+        setTimeout(()=>{if(dialog.open){ready=true;start=Date.now();go.textContent="GO! CLICK NOW";}},1800+Math.random()*2500);
+      }
 
-          attempts -= 1;
-
-          if (button.dataset.zone === goal) {
-            score += 1;
-            message.textContent = "Goal! Nice shot!";
-          } else {
-            message.textContent = "Saved! Try another zone.";
+      if (id === "code") {
+        const answer=String(Math.floor(100+Math.random()*900));
+        shell("Crack the 3-digit lock. Clue: the code is between 100 and 999.",
+          `<input class="game-input" id="guess" maxlength="3" inputmode="numeric" placeholder="Enter 3 digits"><button class="play-button" id="check">Try code</button>`);
+        document.getElementById("check").onclick=()=>{
+          const guess=document.getElementById("guess").value;
+          if(guess===answer) message("Lock opened! You cracked the code.");
+          else if(guess.length!==3) message("Enter exactly 3 digits.");
+          else {
+            const exact=[...guess].filter((digit,i)=>digit===answer[i]).length;
+            message(`${exact} digit${exact===1?"":"s"} in the correct position. Try again.`);
           }
+        };
+      }
 
-          document.getElementById("sports-score").textContent = score;
-          document.getElementById("sports-attempts").textContent = attempts;
-
-          if (attempts === 0) {
-            message.textContent = `Game over! You scored ${score} goal${score === 1 ? "" : "s"}.`;
-            gameStage.querySelectorAll("[data-zone]").forEach((zoneButton) => {
-              zoneButton.disabled = true;
-            });
-          } else {
-            setGoal();
-          }
-        });
-      });
-
-      document.getElementById("sports-restart").addEventListener("click", startSports);
-      setGoal();
-    }
-
-    function startBuild() {
-      let pieces = 0;
-
-      gameStage.innerHTML = `
-        <p class="game-instructions">Pick pieces and create your own design.</p>
-        <p class="build-score">Pieces placed: <strong id="pieces-count">0</strong></p>
-        <div class="choice-list" id="build-options">
-          <button class="choice-button" type="button">🧱 Wall</button>
-          <button class="choice-button" type="button">🪟 Window</button>
-          <button class="choice-button" type="button">🌳 Tree</button>
-          <button class="choice-button" type="button">⭐ Light</button>
-          <button class="choice-button" type="button">🏠 Roof</button>
-          <button class="choice-button" type="button">🌼 Flower</button>
-        </div>
-        <p class="game-message" id="build-message">Start building your world.</p>
-        <button class="demo-button" id="build-restart" type="button">New build</button>
-      `;
-
-      document.querySelectorAll("#build-options .choice-button").forEach((button) => {
-        button.addEventListener("click", () => {
-          pieces += 1;
-          document.getElementById("pieces-count").textContent = pieces;
-          document.getElementById("build-message").textContent =
-            `${button.textContent} added to your build!`;
-        });
-      });
-
-      document.getElementById("build-restart").addEventListener("click", startBuild);
-    }
-
-    function startChoices() {
-      const scenarios = [
-        {
-          question: "Night is approaching and you have limited supplies. What comes first?",
-          answers: ["Find shelter", "Take a long detour", "Ignore the weather"],
-          correct: "Find shelter"
-        },
-        {
-          question: "You discover an unfamiliar trail. What is the safest move?",
-          answers: ["Check your map", "Run ahead", "Leave your gear"],
-          correct: "Check your map"
-        },
-        {
-          question: "Your team needs to cross a risky area. What helps most?",
-          answers: ["Plan together", "Split up", "Rush in"],
-          correct: "Plan together"
-        },
-        {
-          question: "You find useful materials. What should you do?",
-          answers: ["Save them for gear", "Drop them", "Waste them"],
-          correct: "Save them for gear"
-        },
-        {
-          question: "You hear a strange sound nearby. What is the careful reaction?",
-          answers: ["Look around first", "Sprint toward it", "Close your eyes"],
-          correct: "Look around first"
-        }
-      ];
-
-      let round = 0;
-      let score = 0;
-
-      function showRound() {
-        if (round >= scenarios.length) {
-          gameStage.innerHTML = `
-            <p class="game-instructions">Challenge complete!</p>
-            <p class="game-message">You made ${score} smart choice${score === 1 ? "" : "s"} out of ${scenarios.length}.</p>
-            <button class="demo-button" id="choices-restart" type="button">Play again</button>
-          `;
-          document.getElementById("choices-restart").addEventListener("click", startChoices);
-          return;
-        }
-
-        const scenario = scenarios[round];
-
-        gameStage.innerHTML = `
-          <p class="game-instructions">Decision ${round + 1} of ${scenarios.length} · Score: ${score}</p>
-          <h3>${scenario.question}</h3>
-          <div class="choice-list">
-            ${scenario.answers.map((answer) =>
-              `<button class="choice-button" type="button" data-answer="${answer}">${answer}</button>`
-            ).join("")}
-          </div>
-          <p class="game-message" id="choice-message"></p>
-        `;
-
-        gameStage.querySelectorAll("[data-answer]").forEach((button) => {
-          button.addEventListener("click", () => {
-            const correct = button.dataset.answer === scenario.correct;
-            if (correct) score += 1;
-
-            round += 1;
-            document.getElementById("choice-message").textContent =
-              correct ? "Good choice!" : `Not quite — ${scenario.correct} was the best move.`;
-
-            window.setTimeout(showRound, 700);
-          });
+      if (id === "route") {
+        let step=0;
+        const path=["North","East","East","South"];
+        shell("Route briefing: move North, then East twice, then South.",
+          `<div class="game-hud">Checkpoint <b id="step">0</b>/4</div><div class="game-row" id="route"></div>`);
+        ["North","East","South","West"].forEach(direction=>{
+          document.getElementById("route").append(button(direction,()=>{
+            if(direction===path[step]){step++;document.getElementById("step").textContent=step;message(step===4?"Squad reached the objective!":"Correct route.");}
+            else{step=0;document.getElementById("step").textContent=step;message("Wrong turn. Route reset to checkpoint 0.");}
+          }));
         });
       }
 
-      showRound();
+      if (id === "loadout") {
+        let points=10, picks=[];
+        shell("Mission needs 10 points exactly. Select gear; each item costs differently.",
+          `<div class="game-hud">Points left: <b id="points">10</b></div><div class="game-row" id="gear"></div><button class="play-button" id="deploy">Deploy</button>`);
+        [["Medkit",3],["Scanner",4],["Rope",2],["Shield",5],["Rations",1]].forEach(([name,cost])=>{
+          document.getElementById("gear").append(button(`${name} (${cost})`,()=>{
+            if(points>=cost){points-=cost;picks.push(name);document.getElementById("points").textContent=points;message(`Added ${name}.`);}
+            else message("Not enough loadout points.");
+          }));
+        });
+        document.getElementById("deploy").onclick=()=>message(points===0?`Balanced loadout: ${picks.join(", ")}.`:`Spend all points first; ${points} remain.`);
+      }
+
+      if (id === "aim") {
+        const target=Math.floor(Math.random()*9);
+        shell("Locate the marked target on the 3×3 scanner grid.",
+          `<div class="game-grid-mini" id="aim-grid"></div>`);
+        for(let i=0;i<9;i++){
+          const cell=button(["A1","B1","C1","A2","B2","C2","A3","B3","C3"][i],()=>{
+            message(i===target?"Target acquired!":"Miss. Scan another coordinate.");
+            if(i===target) cell.disabled=true;
+          },"game-cell");
+          document.getElementById("aim-grid").append(cell);
+        }
+        message("Hint: target coordinate is "+["A1","B1","C1","A2","B2","C2","A3","B3","C3"][target]);
+      }
+
+      if (id === "reload") {
+        let value=0, dir=1;
+        shell("Stop the moving reload meter inside the green 40–60% zone.",
+          `<div class="game-meter"><div class="game-meter-fill" id="meter"></div></div><button class="play-button" id="fire">Fire</button>`);
+        const fill=document.getElementById("meter");
+        timer=setInterval(()=>{value+=dir*2;if(value>=100||value<=0)dir*=-1;fill.style.width=value+"%";},30);
+        document.getElementById("fire").onclick=()=>{stopTimer();message(value>=40&&value<=60?"Perfect reload! Shot ready.":"Reload timing missed—try again.");};
+      }
+
+      if (id === "sequence") {
+        const sequence=Array.from({length:5},()=>1+Math.floor(Math.random()*4));
+        let turn=0;
+        shell("Repeat the 5-symbol sequence shown in the briefing.",
+          `<p class="game-hud" id="briefing"></p><div class="game-row" id="symbols"></div>`);
+        document.getElementById("briefing").textContent=sequence.join(" → ");
+        [1,2,3,4].forEach(n=>document.getElementById("symbols").append(button("Symbol "+n,()=>{
+          if(n===sequence[turn]){turn++;message(turn===5?"Sequence complete! Rift sealed.":`Correct: ${turn}/5`);}
+          else{turn=0;message("Wrong symbol. Sequence reset.");}
+        })));
+      }
+
+      if (id === "resources") {
+        let day=1, food=3, water=3, rest=3;
+        shell("Survive 5 days. Every choice spends a day; keep food, water and rest above zero.",
+          `<div class="game-hud"><span>Day <b id="day">1</b>/5</span><span>Food <b id="food">3</b> · Water <b id="water">3</b> · Rest <b id="rest">3</b></span></div><div class="game-row" id="actions"></div>`);
+        [["Find food",1,0,0],["Find water",0,1,0],["Rest",0,0,1],["Explore",0,0,-1]].forEach(([label,f,w,r])=>
+          document.getElementById("actions").append(button(label,()=>{
+            day++;food+=f-1;water+=w-1;rest+=r;
+            ["day","food","water","rest"].forEach((key,i)=>document.getElementById(key).textContent=[day,food,water,rest][i]);
+            if(Math.min(food,water,rest)<=0)message("You ran out of supplies. Survival challenge failed.");
+            else if(day>5)message("Five days survived! You made it.");
+            else message("Day passed. Choose your next survival action.");
+          }))
+        );
+      }
+
+      if (id === "shelter") {
+        const weather=["Blizzard","Heavy rain","Heatwave"];
+        const materials={Blizzard:"Insulated tent", "Heavy rain":"Waterproof tarp", Heatwave:"Shade canopy"};
+        let index=0, score=0;
+        shell("Choose shelter material suited to each forecast.",
+          `<p class="game-hud" id="forecast"></p><div class="game-row" id="materials"></div><p>Correct forecasts: <b id="score">0</b>/3</p>`);
+        const next=()=>{if(index>=3){message(`Shelter score: ${score}/3.`);return;}document.getElementById("forecast").textContent=`Forecast: ${weather[index]}`;};
+        ["Insulated tent","Waterproof tarp","Shade canopy"].forEach(item=>document.getElementById("materials").append(button(item,()=>{
+          if(index>=3)return;
+          if(item===materials[weather[index]])score++;
+          index++;document.getElementById("score").textContent=score;next();
+        })));
+        next();
+      }
+
+      if (id === "craft") {
+        let selected=[];
+        shell("Craft a fishing rod: select exactly Stick + Line + Hook, then craft.",
+          `<div class="game-row" id="parts"></div><button class="play-button" id="craft-it">Craft</button>`);
+        ["Stick","Line","Hook","Stone","Leaf"].forEach(part=>document.getElementById("parts").append(button(part,()=>{
+          selected.push(part);message(`Collected: ${selected.join(", ")}`);
+        })));
+        document.getElementById("craft-it").onclick=()=>{
+          const needed=["Stick","Line","Hook"];
+          message(selected.length===3&&needed.every(x=>selected.includes(x))?"Fishing rod crafted!":"Recipe doesn't match. Reset and collect the three correct parts.");
+          selected=[];
+        };
+      }
+
+      if (id === "riddle") {
+        shell("Riddle: I have cities but no houses, forests but no trees, and water but no fish. What am I?",
+          `<div class="game-row" id="answers"></div>`);
+        ["A map","A dream","A painting"].forEach(answer=>document.getElementById("answers").append(button(answer,()=>message(answer==="A map"?"Correct! The hidden gate opens.":"Not this time. Read the clues again."))));
+      }
+
+      if (id === "map") {
+        let position=0;
+        const route=["North","North","East","South"];
+        shell("Reach the treasure by following the map: N, N, E, S.",
+          `<p class="game-hud">Steps: <b id="steps">0</b>/4</p><div class="game-row" id="directions"></div>`);
+        ["North","East","South","West"].forEach(dir=>document.getElementById("directions").append(button(dir,()=>{
+          if(dir===route[position]){position++;message(position===4?"Treasure found!":"You are on the right trail.");}
+          else{position=0;message("Dead end. You returned to the starting point.");}
+          document.getElementById("steps").textContent=position;
+        })));
+      }
+
+      if (id === "inventory") {
+        let order=[];
+        const correct=["Key","Gem","Scroll"];
+        shell("Use the relics in the right order: key opens the chest, gem reveals the clue, scroll opens the exit.",
+          `<div class="game-row" id="items"></div>`);
+        ["Key","Gem","Scroll"].forEach(item=>document.getElementById("items").append(button(item,()=>{
+          order.push(item);
+          if(order.length===3)message(order.every((x,i)=>x===correct[i])?"Puzzle solved! Exit unlocked.":"Wrong order. Refresh the demo to reset.");
+          else message(`Used ${item}.`);
+        })));
+      }
+
+      if (id === "memory") {
+        const pattern=Array.from({length:4},()=>1+Math.floor(Math.random()*4));
+        let pick=0;
+        shell("Remember the haunted lights, then repeat their numbered pattern.",
+          `<p class="game-hud" id="pattern"></p><div class="game-row" id="memory-buttons"></div>`);
+        document.getElementById("pattern").textContent=pattern.join(" • ");
+        [1,2,3,4].forEach(n=>document.getElementById("memory-buttons").append(button("Light "+n,()=>{
+          if(n!==pattern[pick]){pick=0;message("Wrong light. Start the pattern again.");return;}
+          pick++;message(pick===pattern.length?"You remembered it. The door unlocks!":`Correct light ${pick}/${pattern.length}`);
+        })));
+      }
+
+      if (id === "doors") {
+        const safe=1+Math.floor(Math.random()*3);
+        shell("Clue: The safe exit is behind a door with an odd number. Pick a door.",
+          `<div class="game-row" id="doors"></div>`);
+        [1,2,3].forEach(n=>document.getElementById("doors").append(button("Door "+n,()=>message(n===safe&&n%2===1?"Safe! You escaped the house.":n%2===0?"The clue said odd number!":"Wrong door. Try another."))));
+      }
+
+      if (id === "spot") {
+        const changes=["A picture moved","The lamp changed color","A window opened"];
+        let found=false;
+        shell("Room scan: spot the change described by the clue.",
+          `<p class="game-hud">Clue: <b>${changes[Math.floor(Math.random()*changes.length)]}</b></p><div class="game-row" id="spot-options"></div>`);
+        const clue=document.querySelector(".game-hud b").textContent;
+        ["A picture moved","The lamp changed color","A window opened","Nothing changed"].forEach(item=>document.getElementById("spot-options").append(button(item,()=>{
+          found=true;message(item===clue?"You spotted it!":"That detail was unchanged.");
+        })));
+        timer=setTimeout(()=>{if(dialog.open&&!found)message("The room went dark. Scan faster next time.");},12000);
+      }
+
+      if (id === "catch") {
+        let caught=0, misses=0;
+        shell("Catch 5 geese. Ducks are decoys—clicking one costs a point.",
+          `<div class="game-hud">Geese: <b id="caught">0</b>/5 · Decoys: <b id="misses">0</b></div><div class="game-row" id="birds"></div>`);
+        const draw=()=>{
+          const row=document.getElementById("birds");row.innerHTML="";
+          ["🦆","🪿","🦆","🪿","🦆"].sort(()=>Math.random()-.5).forEach(bird=>row.append(button(bird,()=>{
+            if(bird==="🪿")caught++;else misses++;
+            document.getElementById("caught").textContent=caught;
+            document.getElementById("misses").textContent=misses;
+            message(caught>=5?"Five geese caught!":"Quick—pick another bird!");
+            if(caught<5)draw();
+          })));
+        };
+        draw();
+      }
+
+      if (id === "balance") {
+        let balance=0, turns=0;
+        shell("Keep the wobbly hero balanced. Correct the tilt for 8 turns.",
+          `<p class="game-hud">Balance: <b id="balance">0</b> · Turns: <b id="turns">0</b>/8</p><div class="game-row" id="balance-controls"></div>`);
+        ["Tilt left","Center","Tilt right"].forEach((label,i)=>document.getElementById("balance-controls").append(button(label,()=>{
+          const wobble=Math.floor(Math.random()*3)-1;
+          balance += (i-1)+wobble;
+          turns++;
+          document.getElementById("balance").textContent=balance;
+          document.getElementById("turns").textContent=turns;
+          if(Math.abs(balance)>5)message("The hero fell! Try to keep the balance closer to zero.");
+          else if(turns===8)message("Balance challenge complete!");
+          else message("Still standing—adjust the tilt again.");
+        })));
+      }
+
+      if (id === "recipe") {
+        let step=0;
+        const order=["Bread","Cheese","Tomato","Serve"];
+        shell("Kitchen order: Bread → Cheese → Tomato → Serve. Do it in order.",
+          `<div class="game-row" id="food"></div>`);
+        ["Bread","Cheese","Tomato","Serve"].forEach(item=>document.getElementById("food").append(button(item,()=>{
+          if(item===order[step]){step++;message(step===4?"Order served! Kitchen saved.":`${item} added correctly.`);}
+          else{step=0;message("Wrong ingredient! Start the order again.");}
+        })));
+      }
+
+      if (id === "race") {
+        let progress=0;
+        shell("Tap accelerate to reach 100% and cross the finish line.",
+          `<div class="game-hud">Distance <b id="distance">0%</b></div><div class="game-meter"><div class="game-meter-fill" id="race-meter"></div></div><button class="play-button" id="accelerate">Accelerate</button>`);
+        document.getElementById("accelerate").onclick=()=>{
+          progress=Math.min(100,progress+9+Math.floor(Math.random()*12));
+          document.getElementById("distance").textContent=progress+"%";
+          document.getElementById("race-meter").style.width=progress+"%";
+          if(progress===100)message("Finish line! You won.");
+        };
+      }
+
+      if (id === "lanes") {
+        let position=1, distance=0;
+        shell("Choose a lane each turn. Avoid the obstacle and finish 7 turns.",
+          `<p class="game-hud">Distance: <b id="distance">0</b>/7 · Car lane: <b id="position">2</b></p><div class="game-row" id="track"></div>`);
+        const move=()=>{
+          const obstacle=Math.floor(Math.random()*3);
+          const row=document.getElementById("track");row.innerHTML="";
+          [0,1,2].forEach(lane=>row.append(button(lane===obstacle?"🚧":"Lane "+(lane+1),()=>{
+            position=lane;
+            if(lane===obstacle){distance=0;message("Crash! Race restarted.");}
+            else{distance++;message(distance===7?"Finish! Clean driving.":"Clear lane—keep going.");}
+            document.getElementById("distance").textContent=distance;
+            document.getElementById("position").textContent=position+1;
+            if(distance<7)move();
+          })));
+        };
+        move();
+      }
+
+      if (id === "gears") {
+        let speed=0, shifts=0, direction=1;
+        shell("Click Shift only when the speed meter is between 45% and 60%. Get 4 good shifts.",
+          `<div class="game-hud">Speed: <b id="speed">0%</b> · Good shifts: <b id="shifts">0</b>/4</div><div class="game-meter"><div class="game-meter-fill" id="gear-meter"></div></div><button class="play-button" id="shift">Shift gear</button>`);
+        timer=setInterval(()=>{
+          speed+=direction*3;
+          if(speed>=100||speed<=0)direction*=-1;
+          document.getElementById("speed").textContent=speed+"%";
+          document.getElementById("gear-meter").style.width=speed+"%";
+        },60);
+        document.getElementById("shift").onclick=()=>{
+          if(speed>=45&&speed<=60){shifts++;message("Perfect shift!");}
+          else message("Bad shift—wait for the green zone.");
+          document.getElementById("shifts").textContent=shifts;
+          if(shifts>=4){stopTimer();message("Four perfect shifts. Race won!");}
+        };
+      }
+
+      if (id === "blueprint") {
+        let step=0;
+        const plan=["Foundation","Wall","Window","Roof"];
+        shell("Build from the blueprint in order: Foundation, Wall, Window, Roof.",
+          `<div class="game-row" id="pieces"></div>`);
+        ["Foundation","Wall","Window","Roof"].forEach(piece=>document.getElementById("pieces").append(button(piece,()=>{
+          if(piece===plan[step]){step++;message(step===4?"Blueprint complete—house built!":`${piece} placed correctly.`);}
+          else{step=0;message("Blueprint mismatch. Restart from foundation.");}
+        })));
+      }
+
+      if (id === "pixel") {
+        const pattern=[0,2,4,6,8];
+        let painted=[];
+        shell("Paint the five diagonal pixels to match the reference pattern.",
+          `<p class="game-hud">Reference: ↘ diagonal</p><div class="game-grid-mini" id="pixels"></div>`);
+        for(let i=0;i<9;i++){
+          const cell=button("·",()=>{
+            if(!pattern.includes(i)){message("That pixel is outside the pattern.");return;}
+            if(!painted.includes(i)){painted.push(i);cell.textContent="■";cell.classList.add("selected");}
+            message(painted.length===5?"Pattern matched!":"Diagonal pixels: "+painted.length+"/5");
+          },"game-cell");
+          document.getElementById("pixels").append(cell);
+        }
+      }
+
+      if (id === "garden") {
+        let water=0,seeds=0,sun=0;
+        shell("Give the garden 2 water, 2 seeds and 1 sunlight to grow it.",
+          `<div class="game-hud">Water <b id="water">0</b>/2 · Seeds <b id="seeds">0</b>/2 · Sun <b id="sun">0</b>/1</div><div class="game-row" id="garden-actions"></div>`);
+        [["Water",()=>water++],["Plant seed",()=>seeds++],["Sunlight",()=>sun++]].forEach(([label,action])=>
+          document.getElementById("garden-actions").append(button(label,()=>{
+            action();
+            document.getElementById("water").textContent=Math.min(water,2);
+            document.getElementById("seeds").textContent=Math.min(seeds,2);
+            document.getElementById("sun").textContent=Math.min(sun,1);
+            message(water>=2&&seeds>=2&&sun>=1?"Garden grown!":"Keep tending your garden.");
+          }))
+        );
+      }
+
+      if (id === "penalty") {
+        let goals=0, shots=5;
+        shell("Choose a corner. The keeper moves—score before your 5 shots run out.",
+          `<div class="game-hud">Goals <b id="goals">0</b> · Shots left <b id="shots">5</b></div><div class="game-row" id="corners"></div>`);
+        ["Top left","Top right","Bottom left","Bottom right"].forEach(corner=>document.getElementById("corners").append(button(corner,()=>{
+          if(!shots)return;
+          shots--;
+          const saved=["Top left","Top right","Bottom left","Bottom right"][Math.floor(Math.random()*4)];
+          if(corner!==saved){goals++;message("Goal! You beat the keeper.");}
+          else message("Saved by the keeper!");
+          document.getElementById("goals").textContent=goals;
+          document.getElementById("shots").textContent=shots;
+          if(!shots)message(`Match over: ${goals} goals.`);
+        })));
+      }
+
+      if (id === "hoop") {
+        let power=0, direction=1, shots=0, baskets=0;
+        shell("Stop the moving power meter in the 65–80% range to score a basket.",
+          `<div class="game-hud">Power <b id="power">0%</b> · Baskets <b id="baskets">0</b>/3</div><div class="game-meter"><div class="game-meter-fill" id="power-meter"></div></div><button class="play-button" id="shoot">Shoot</button>`);
+        timer=setInterval(()=>{
+          power+=direction*2;
+          if(power>=100||power<=0)direction*=-1;
+          document.getElementById("power").textContent=power+"%";
+          document.getElementById("power-meter").style.width=power+"%";
+        },45);
+        document.getElementById("shoot").onclick=()=>{
+          shots++;
+          if(power>=65&&power<=80)baskets++;
+          document.getElementById("baskets").textContent=baskets;
+          message(power>=65&&power<=80?"Swish!":"Missed the shot.");
+          if(baskets>=3||shots>=8){stopTimer();message(`Game over: ${baskets} baskets in ${shots} shots.`);}
+        };
+      }
+
+      if (id === "cricket") {
+        let runs=0, balls=6;
+        shell("Choose a shot as the ball arrives. Correct timing scores runs; mistiming can lose a wicket.",
+          `<div class="game-hud">Runs <b id="runs">0</b> · Balls <b id="balls">6</b></div><div class="game-row" id="shots"></div>`);
+        ["Defend","Drive","Pull"].forEach(shot=>document.getElementById("shots").append(button(shot,()=>{
+          if(!balls)return;
+          balls--;
+          const outcome=Math.floor(Math.random()*3);
+          if(outcome===0){runs+=shot==="Defend"?1:0;message("Safe defensive play.");}
+          else if(outcome===1){runs+=shot==="Drive"?4:2;message("Great timing—runs scored!");}
+          else{message(shot==="Pull"?"Big hit! Six runs!":"Caught! Wicket lost.");if(shot==="Pull")runs+=6;}
+          document.getElementById("runs").textContent=runs;
+          document.getElementById("balls").textContent=balls;
+          if(!balls)message(`Innings over: ${runs} runs.`);
+        })));
+      }
     }
 
-    dialogClose.addEventListener("click", () => {
+    document.getElementById("demo-toggle").addEventListener("click", () => {});
+    document.getElementById("dialog-close").addEventListener("click", () => {
       stopTimer();
       dialog.close();
     });
-
-    dialog.addEventListener("click", (event) => {
-      if (event.target === dialog) {
-        stopTimer();
-        dialog.close();
-      }
-    });
-
     dialog.addEventListener("close", stopTimer);
+    dialog.addEventListener("click", event => {
+      if(event.target===dialog){stopTimer();dialog.close();}
+    });
 
     renderGames();
   </script>
