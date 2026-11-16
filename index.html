@@ -361,6 +361,288 @@
       flex-wrap: wrap;
     }
 
+    /* Added styles for the game catalog and playable demos */
+    .game-library {
+      background: #0c1118;
+      border-block: 1px solid var(--line);
+    }
+
+    .game-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 0 0 28px;
+    }
+
+    .filter-button {
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: transparent;
+      color: #d3d9de;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.84rem;
+      transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+    }
+
+    .filter-button:hover,
+    .filter-button[aria-pressed="true"] {
+      border-color: var(--accent);
+      background: rgba(197, 255, 74, 0.08);
+      color: var(--accent);
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .game-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 230px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015));
+      transition: border-color 160ms ease, transform 160ms ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(197, 255, 74, 0.65);
+    }
+
+    .game-card[hidden] {
+      display: none;
+    }
+
+    .game-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .game-icon {
+      font-size: 1.7rem;
+      line-height: 1;
+    }
+
+    .game-category {
+      padding: 4px 9px;
+      border: 1px solid rgba(197, 255, 74, 0.3);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .game-card h3 {
+      margin: 18px 0 6px;
+      font-size: 1.15rem;
+    }
+
+    .game-card p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .game-play {
+      min-height: 40px;
+      margin-top: auto;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      background: var(--accent);
+      color: #10150a;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.86rem;
+      font-weight: 800;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .game-play:hover {
+      transform: translateY(-2px);
+      background: #d5ff7b;
+    }
+
+    .game-dialog {
+      width: min(620px, calc(100% - 28px));
+      max-width: 620px;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      background: #10151d;
+      color: var(--text);
+      box-shadow: 0 24px 90px rgba(0, 0, 0, 0.65);
+    }
+
+    .game-dialog::backdrop {
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(5px);
+    }
+
+    .dialog-inner {
+      padding: 26px;
+    }
+
+    .dialog-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .dialog-header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .dialog-header p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .dialog-close {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .dialog-close:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .game-stage {
+      min-height: 250px;
+      padding: 24px 0 4px;
+    }
+
+    .game-instructions {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .game-hud {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .demo-button {
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      background: var(--accent);
+      color: #10150a;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+    }
+
+    .demo-button:hover {
+      background: #d5ff7b;
+    }
+
+    .target-area {
+      position: relative;
+      height: 180px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background:
+        radial-gradient(circle at center, rgba(197, 255, 74, 0.07), transparent 55%),
+        #080b10;
+    }
+
+    .target-button {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #10150a;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 900;
+      box-shadow: 0 0 20px rgba(197, 255, 74, 0.32);
+    }
+
+    .race-track {
+      height: 24px;
+      margin: 20px 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #080b10;
+    }
+
+    .race-progress {
+      width: 0;
+      height: 100%;
+      background: var(--accent);
+      transition: width 120ms ease;
+    }
+
+    .sports-choices,
+    .quiz-choices,
+    .build-choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .choice-button {
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #171e28;
+      color: var(--text);
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .choice-button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .game-message {
+      min-height: 28px;
+      margin: 12px 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .build-score {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
     @media (max-width: 760px) {
       .nav-links {
         display: none;
@@ -383,7 +665,8 @@
       }
 
       .feature-grid,
-      .mode-grid {
+      .mode-grid,
+      .game-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -405,12 +688,17 @@
 
       .feature-grid,
       .mode-grid,
+      .game-grid,
       .systems-list {
         grid-template-columns: 1fr;
       }
 
       .hero {
         min-height: 640px;
+      }
+
+      .dialog-inner {
+        padding: 20px;
       }
     }
 
@@ -433,11 +721,11 @@
       <div class="nav-links">
         <a href="#world">The World</a>
         <a href="#features">Features</a>
-        <a href="#modes">Game Modes</a>
+        <a href="#games">Games</a>
         <a href="#vision">Vision</a>
       </div>
 
-      <a class="nav-cta" href="#modes">Explore NEXUS</a>
+      <a class="nav-cta" href="#games">Play a Demo</a>
     </nav>
   </header>
 
@@ -452,8 +740,8 @@
             Race, compete, and create your own story with friends.
           </p>
           <div class="button-row">
-            <a class="button" href="#world">Discover the World</a>
-            <a class="button secondary" href="#modes">View Game Modes</a>
+            <a class="button" href="#games">Explore the Games</a>
+            <a class="button secondary" href="#world">Discover the World</a>
           </div>
           <p class="hero-note">One World. Unlimited Adventures. Endless Possibilities.</p>
         </div>
@@ -532,194 +820,80 @@
       </div>
     </section>
 
+    <section class="game-library" id="games">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Pick up and play</p>
+          <h2>Find your next game.</h2>
+          <p>Choose a category, pick a game, and launch its playable browser demo.</p>
+        </div>
+
+        <div class="game-filters" role="group" aria-label="Filter games by category">
+          <button class="filter-button" type="button" data-filter="all" aria-pressed="true">All games</button>
+          <button class="filter-button" type="button" data-filter="action" aria-pressed="false">Action</button>
+          <button class="filter-button" type="button" data-filter="tactical" aria-pressed="false">Tactical</button>
+          <button class="filter-button" type="button" data-filter="shooter" aria-pressed="false">Shooter</button>
+          <button class="filter-button" type="button" data-filter="survival" aria-pressed="false">Survival</button>
+          <button class="filter-button" type="button" data-filter="adventure" aria-pressed="false">Adventure</button>
+          <button class="filter-button" type="button" data-filter="horror" aria-pressed="false">Horror</button>
+          <button class="filter-button" type="button" data-filter="funny" aria-pressed="false">Funny</button>
+          <button class="filter-button" type="button" data-filter="racing" aria-pressed="false">Racing</button>
+          <button class="filter-button" type="button" data-filter="creative" aria-pressed="false">Creative</button>
+          <button class="filter-button" type="button" data-filter="sports" aria-pressed="false">Sports</button>
+        </div>
+
+        <div class="game-grid" id="game-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
     <section class="modes" id="modes">
       <div class="container">
         <div class="section-heading">
           <p class="eyebrow">Choose your adventure</p>
-          <h2>36 ways to play</h2>
-          <p>From tactical challenges and spooky adventures to silly party games, there’s something for every player.</p>
+          <h2>Game modes</h2>
+          <p>Switch up the pace whenever you want a new challenge.</p>
         </div>
 
         <div class="mode-grid">
           <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⚔</span>
-            <h3>Action</h3>
-            <p>Jump into fast-paced challenges that test your reflexes.</p>
-          </article>
-          <article class="mode-card">
             <span class="mode-icon" aria-hidden="true">⌖</span>
-            <h3>Tactical</h3>
-            <p>Plan your moves, work as a team, and complete objectives.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">✦</span>
-            <h3>Shooter</h3>
-            <p>Compete in action-packed matches across varied arenas.</p>
+            <h3>Battle Royale</h3>
+            <p>Be the last player standing.</p>
           </article>
           <article class="mode-card">
             <span class="mode-icon" aria-hidden="true">▧</span>
             <h3>Survival</h3>
-            <p>Gather resources, craft gear, and build a safe shelter.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">➤</span>
-            <h3>Adventure</h3>
-            <p>Explore new places, complete missions, and uncover secrets.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">☾</span>
-            <h3>Horror</h3>
-            <p>Explore eerie locations and see if you can make it through the night.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">☻</span>
-            <h3>Funny Party Games</h3>
-            <p>Play silly challenges with friends and embrace the chaos.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">➜</span>
-            <h3>Racing</h3>
-            <p>Race cars, bikes, and other vehicles on tracks and open roads.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">◎</span>
-            <h3>Sports</h3>
-            <p>Compete in friendly matches and team sports with friends.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⌂</span>
-            <h3>Sandbox Building</h3>
-            <p>Build houses, shape environments, and create your own space.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">◉</span>
-            <h3>Battle Royale</h3>
-            <p>Outlast your rivals and be the last player standing.</p>
+            <p>Gather, craft, build, and endure.</p>
           </article>
           <article class="mode-card">
             <span class="mode-icon" aria-hidden="true">⇄</span>
             <h3>Team Deathmatch</h3>
-            <p>Join a team and compete to score the most points.</p>
+            <p>Join a team and compete in fast-paced battles.</p>
           </article>
           <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⬡</span>
-            <h3>Role-Playing (RPG)</h3>
-            <p>Develop your character, take on quests, and shape your story.</p>
+            <span class="mode-icon" aria-hidden="true">➤</span>
+            <h3>Racing</h3>
+            <p>Race vehicles across courses and open terrain.</p>
           </article>
           <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">♟</span>
-            <h3>Stealth</h3>
-            <p>Stay out of sight, make a plan, and finish missions quietly.</p>
+            <span class="mode-icon" aria-hidden="true">✦</span>
+            <h3>Adventure</h3>
+            <p>Complete story missions and uncover secrets.</p>
           </article>
           <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">◇</span>
-            <h3>Puzzle</h3>
-            <p>Solve clever challenges by finding patterns and hidden clues.</p>
+            <span class="mode-icon" aria-hidden="true">⌂</span>
+            <h3>Sandbox</h3>
+            <p>Build freely and create your own world.</p>
           </article>
           <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⬆</span>
-            <h3>Platformer</h3>
-            <p>Jump, climb, and move through obstacle-filled levels.</p>
+            <span class="mode-icon" aria-hidden="true">◎</span>
+            <h3>Sports</h3>
+            <p>Play football, cricket, and more with friends.</p>
           </article>
           <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">♜</span>
-            <h3>Strategy</h3>
-            <p>Think ahead, manage resources, and outsmart your opponents.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">▦</span>
-            <h3>Tower Defense</h3>
-            <p>Protect your base by placing defenses and stopping incoming waves.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⟳</span>
-            <h3>Roguelike</h3>
-            <p>Take on a fresh challenge each run and adapt as you go.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">♫</span>
-            <h3>Rhythm</h3>
-            <p>Follow the beat and test your timing in music-based challenges.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">✊</span>
-            <h3>Fighting</h3>
-            <p>Face off one-on-one and master your moves and timing.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">♧</span>
-            <h3>Co-op Missions</h3>
-            <p>Team up with friends to tackle missions and shared challenges.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">?</span>
-            <h3>Mystery</h3>
-            <p>Follow clues, question what you find, and solve the case.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⌘</span>
-            <h3>Simulation</h3>
-            <p>Take charge of a place, activity, or business and make it your own.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">↗</span>
-            <h3>Parkour</h3>
-            <p>Run, climb, and leap through courses full of movement challenges.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">♧</span>
-            <h3>Crafting</h3>
-            <p>Combine found materials to create tools, equipment, and useful items.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⌕</span>
-            <h3>Open-World Exploration</h3>
-            <p>Roam a large connected world and discover places at your own pace.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⚑</span>
-            <h3>Capture the Flag</h3>
-            <p>Coordinate with your team to capture the other side’s flag.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⬡</span>
-            <h3>Extraction</h3>
-            <p>Enter a dangerous area, collect what you can, and reach safety.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">♨</span>
-            <h3>Zombie Survival</h3>
-            <p>Work together to defend your shelter against waves of zombies.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">◈</span>
-            <h3>Disaster Survival</h3>
-            <p>React quickly and find a safe place as the environment changes.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">▤</span>
-            <h3>City Builder</h3>
-            <p>Plan streets, grow neighborhoods, and build a thriving city.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">♧</span>
-            <h3>Farming</h3>
-            <p>Grow crops, care for animals, and develop a peaceful homestead.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">⚓</span>
-            <h3>Naval Adventure</h3>
-            <p>Explore the seas, visit islands, and take on ocean challenges.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">✈</span>
-            <h3>Flight</h3>
-            <p>Take to the skies and explore the world from above.</p>
-          </article>
-          <article class="mode-card">
-            <span class="mode-icon" aria-hidden="true">♧</span>
-            <h3>Fishing</h3>
-            <p>Find quiet waters, cast a line, and collect your best catches.</p>
+            <span class="mode-icon" aria-hidden="true">◉</span>
+            <h3>Free Roam</h3>
+            <p>Explore at your own pace, without restrictions.</p>
           </article>
         </div>
       </div>
@@ -768,7 +942,7 @@
       <div class="container">
         <h2>Your next adventure starts here.</h2>
         <p>One World. Unlimited Adventures. Endless Possibilities.</p>
-        <a class="button" href="#home">Back to the Top</a>
+        <a class="button" href="#games">Play a Demo</a>
       </div>
     </section>
   </main>
@@ -779,5 +953,408 @@
       <span>Game concept landing page · NEXUS — Ultimate Survival World</span>
     </div>
   </footer>
+
+  <dialog class="game-dialog" id="game-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <div class="dialog-header">
+        <div>
+          <h2 id="dialog-title">Game demo</h2>
+          <p id="dialog-category">NEXUS mini-game</p>
+        </div>
+        <button class="dialog-close" id="dialog-close" type="button" aria-label="Close game">×</button>
+      </div>
+      <div class="game-stage" id="game-stage"></div>
+    </div>
+  </dialog>
+
+  <script>
+    const games = [
+      { title: "Neon Strike", category: "action", icon: "⚔", mode: "targets", description: "Hit as many moving targets as you can before time runs out." },
+      { title: "Shadow Runner", category: "action", icon: "🏃", mode: "targets", description: "React quickly and catch the target before it escapes." },
+      { title: "Arena Rush", category: "action", icon: "✦", mode: "targets", description: "Test your reflexes in a rapid-fire target challenge." },
+
+      { title: "Operation North", category: "tactical", icon: "⌖", mode: "choices", description: "Make smart field decisions and see how many you get right." },
+      { title: "Silent Protocol", category: "tactical", icon: "♟", mode: "choices", description: "Choose your approach and plan a careful escape." },
+      { title: "Frontline Command", category: "tactical", icon: "⚑", mode: "choices", description: "Make quick tactical calls to lead your squad." },
+
+      { title: "Zero Hour", category: "shooter", icon: "✦", mode: "targets", description: "Click the targets as they appear and beat your best score." },
+      { title: "Rift Breakers", category: "shooter", icon: "◉", mode: "targets", description: "Keep your aim sharp in this quick target challenge." },
+      { title: "Dust Circuit", category: "shooter", icon: "⬡", mode: "targets", description: "Track the target and score as many hits as possible." },
+
+      { title: "Wild Frontier", category: "survival", icon: "▧", mode: "choices", description: "Choose your supplies wisely and see how long you can last." },
+      { title: "Last Shelter", category: "survival", icon: "⌂", mode: "choices", description: "Make resource decisions to prepare your shelter." },
+      { title: "Castaway", category: "survival", icon: "⚓", mode: "choices", description: "Pick the right island survival supplies to stay safe." },
+
+      { title: "Lost Horizon", category: "adventure", icon: "✦", mode: "choices", description: "Make choices as you explore a mysterious new world." },
+      { title: "Beyond the Map", category: "adventure", icon: "➤", mode: "choices", description: "Choose a route and see where your journey takes you." },
+      { title: "Deep Unknown", category: "adventure", icon: "◇", mode: "choices", description: "Explore the unknown one decision at a time." },
+
+      { title: "Whispering Pines", category: "horror", icon: "☾", mode: "targets", description: "Stay alert and react when something appears in the dark." },
+      { title: "Night Shift", category: "horror", icon: "☻", mode: "targets", description: "Keep your nerve and catch the moving shadow." },
+      { title: "Quiet House", category: "horror", icon: "⌂", mode: "choices", description: "Search for clues and choose how to escape the house." },
+
+      { title: "Wobbly Warriors", category: "funny", icon: "☻", mode: "targets", description: "Catch the wobbly characters in a silly click challenge." },
+      { title: "Goose on the Loose", category: "funny", icon: "♧", mode: "targets", description: "Catch the runaway goose before it causes more chaos." },
+      { title: "Kitchen Dash", category: "funny", icon: "✦", mode: "choices", description: "Make quick, ridiculous choices in a chaotic kitchen." },
+
+      { title: "Neon Rush", category: "racing", icon: "➜", mode: "race", description: "Tap the accelerator to get your car to the finish." },
+      { title: "Trailblazer Rally", category: "racing", icon: "➤", mode: "race", description: "Build speed and race across rugged terrain." },
+      { title: "Midnight Drift", category: "racing", icon: "◉", mode: "race", description: "Put the pedal down and reach the finish line." },
+
+      { title: "Build Beyond", category: "creative", icon: "⌂", mode: "build", description: "Choose building pieces and create your own design." },
+      { title: "World Makers", category: "creative", icon: "◇", mode: "build", description: "Make a little world by selecting pieces from the palette." },
+      { title: "Pixel Studio", category: "creative", icon: "▦", mode: "build", description: "Build up your score by adding creative pieces." },
+
+      { title: "Goal Rush", category: "sports", icon: "◎", mode: "sports", description: "Aim for the highlighted goal and score points." },
+      { title: "Penalty Stars", category: "sports", icon: "⚽", mode: "sports", description: "Take your shots and see how many goals you can score." },
+      { title: "Court Clash", category: "sports", icon: "🏀", mode: "sports", description: "Choose the highlighted zone to land your shot." }
+    ];
+
+    const gameGrid = document.getElementById("game-grid");
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const dialog = document.getElementById("game-dialog");
+    const dialogTitle = document.getElementById("dialog-title");
+    const dialogCategory = document.getElementById("dialog-category");
+    const gameStage = document.getElementById("game-stage");
+    const dialogClose = document.getElementById("dialog-close");
+
+    let activeGame = null;
+    let activeTimer = null;
+
+    function renderGames(filter = "all") {
+      const visibleGames = games.filter((game) =>
+        filter === "all" || game.category === filter
+      );
+
+      gameGrid.innerHTML = visibleGames.map((game) => `
+        <article class="game-card">
+          <div class="game-card-top">
+            <span class="game-icon" aria-hidden="true">${game.icon}</span>
+            <span class="game-category">${game.category}</span>
+          </div>
+          <h3>${game.title}</h3>
+          <p>${game.description}</p>
+          <button class="game-play" type="button" data-game="${game.title}">Play Demo →</button>
+        </article>
+      `).join("");
+
+      gameGrid.querySelectorAll(".game-play").forEach((button) => {
+        button.addEventListener("click", () => {
+          const selectedGame = games.find((game) => game.title === button.dataset.game);
+          openGame(selectedGame);
+        });
+      });
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        filterButtons.forEach((filterButton) => {
+          filterButton.setAttribute(
+            "aria-pressed",
+            String(filterButton === button)
+          );
+        });
+        renderGames(button.dataset.filter);
+      });
+    });
+
+    function stopTimer() {
+      if (activeTimer) {
+        clearInterval(activeTimer);
+        activeTimer = null;
+      }
+    }
+
+    function openGame(game) {
+      stopTimer();
+      activeGame = game;
+      dialogTitle.textContent = game.title;
+      dialogCategory.textContent = `${game.category} · Playable mini-game demo`;
+
+      if (!dialog.open) {
+        dialog.showModal();
+      }
+
+      startGame();
+    }
+
+    function startGame() {
+      stopTimer();
+
+      if (activeGame.mode === "race") {
+        startRace();
+      } else if (activeGame.mode === "sports") {
+        startSports();
+      } else if (activeGame.mode === "build") {
+        startBuild();
+      } else if (activeGame.mode === "choices") {
+        startChoices();
+      } else {
+        startTargets();
+      }
+    }
+
+    function startTargets() {
+      let score = 0;
+      let seconds = 15;
+
+      gameStage.innerHTML = `
+        <p class="game-instructions">Click the glowing target as many times as you can in 15 seconds.</p>
+        <div class="game-hud">
+          <span>Score: <strong id="target-score">0</strong></span>
+          <span>Time: <strong id="target-time">15</strong>s</span>
+        </div>
+        <div class="target-area" id="target-area">
+          <button class="target-button" id="target-button" type="button" aria-label="Hit target">✦</button>
+        </div>
+        <p class="game-message" id="target-message">Ready? Start clicking!</p>
+        <button class="demo-button" id="target-restart" type="button">Restart Demo</button>
+      `;
+
+      const area = document.getElementById("target-area");
+      const target = document.getElementById("target-button");
+      const scoreDisplay = document.getElementById("target-score");
+      const timeDisplay = document.getElementById("target-time");
+      const message = document.getElementById("target-message");
+
+      function moveTarget() {
+        const maxX = Math.max(0, area.clientWidth - target.offsetWidth);
+        const maxY = Math.max(0, area.clientHeight - target.offsetHeight);
+        target.style.left = `${Math.random() * maxX}px`;
+        target.style.top = `${Math.random() * maxY}px`;
+      }
+
+      target.addEventListener("click", () => {
+        if (seconds <= 0) return;
+        score += 1;
+        scoreDisplay.textContent = score;
+        moveTarget();
+      });
+
+      document.getElementById("target-restart").addEventListener("click", startTargets);
+
+      moveTarget();
+      activeTimer = setInterval(() => {
+        seconds -= 1;
+        timeDisplay.textContent = seconds;
+
+        if (seconds <= 0) {
+          stopTimer();
+          target.disabled = true;
+          message.textContent = `Time’s up! You scored ${score}.`;
+        }
+      }, 1000);
+    }
+
+    function startRace() {
+      let progress = 0;
+
+      gameStage.innerHTML = `
+        <p class="game-instructions">Tap the accelerator to build speed and reach the finish line.</p>
+        <div class="game-hud"><span>Race progress</span><span id="race-percent">0%</span></div>
+        <div class="race-track"><div class="race-progress" id="race-progress"></div></div>
+        <p class="game-message" id="race-message">Ready at the starting line.</p>
+        <button class="demo-button" id="accelerate-button" type="button">Accelerate!</button>
+        <button class="choice-button" id="race-restart" type="button">Restart</button>
+      `;
+
+      const progressBar = document.getElementById("race-progress");
+      const percent = document.getElementById("race-percent");
+      const message = document.getElementById("race-message");
+      const accelerate = document.getElementById("accelerate-button");
+
+      accelerate.addEventListener("click", () => {
+        if (progress >= 100) return;
+
+        progress = Math.min(100, progress + 8 + Math.floor(Math.random() * 8));
+        progressBar.style.width = `${progress}%`;
+        percent.textContent = `${progress}%`;
+
+        if (progress === 100) {
+          message.textContent = "Finish! You won the race!";
+          accelerate.disabled = true;
+        } else {
+          message.textContent = "Keep accelerating!";
+        }
+      });
+
+      document.getElementById("race-restart").addEventListener("click", startRace);
+    }
+
+    function startSports() {
+      let score = 0;
+      let shotsLeft = 8;
+      let goal = "Center";
+
+      gameStage.innerHTML = `
+        <p class="game-instructions">Aim for the highlighted zone. You have 8 shots.</p>
+        <div class="game-hud">
+          <span>Goals: <strong id="sports-score">0</strong></span>
+          <span>Shots left: <strong id="shots-left">8</strong></span>
+        </div>
+        <p class="game-message" id="sports-message">Shoot for the highlighted zone!</p>
+        <div class="sports-choices">
+          <button class="choice-button" type="button" data-zone="Left">Left</button>
+          <button class="choice-button" type="button" data-zone="Center">Center</button>
+          <button class="choice-button" type="button" data-zone="Right">Right</button>
+        </div>
+        <button class="choice-button" id="sports-restart" type="button">Restart</button>
+      `;
+
+      const message = document.getElementById("sports-message");
+      const zones = ["Left", "Center", "Right"];
+
+      function chooseGoal() {
+        goal = zones[Math.floor(Math.random() * zones.length)];
+        message.textContent = `Aim for ${goal}!`;
+      }
+
+      gameStage.querySelectorAll("[data-zone]").forEach((button) => {
+        button.addEventListener("click", () => {
+          if (shotsLeft <= 0) return;
+
+          shotsLeft -= 1;
+          if (button.dataset.zone === goal) {
+            score += 1;
+            message.textContent = "Goal! Nice shot!";
+          } else {
+            message.textContent = "Saved! Try another zone.";
+          }
+
+          document.getElementById("sports-score").textContent = score;
+          document.getElementById("shots-left").textContent = shotsLeft;
+
+          if (shotsLeft === 0) {
+            message.textContent = `Game over! You scored ${score} goal${score === 1 ? "" : "s"}.`;
+            gameStage.querySelectorAll("[data-zone]").forEach((zoneButton) => {
+              zoneButton.disabled = true;
+            });
+          } else {
+            chooseGoal();
+          }
+        });
+      });
+
+      document.getElementById("sports-restart").addEventListener("click", startSports);
+      chooseGoal();
+    }
+
+    function startBuild() {
+      let pieces = 0;
+
+      gameStage.innerHTML = `
+        <p class="game-instructions">Pick pieces from the palette to build your creation.</p>
+        <p class="build-score">Pieces placed: <strong id="pieces-count">0</strong></p>
+        <div class="build-choices">
+          <button class="choice-button" type="button">🧱 Wall</button>
+          <button class="choice-button" type="button">🪟 Window</button>
+          <button class="choice-button" type="button">🌳 Tree</button>
+          <button class="choice-button" type="button">⭐ Light</button>
+          <button class="choice-button" type="button">🏠 Roof</button>
+        </div>
+        <p class="game-message" id="build-message">Your build is ready to begin.</p>
+        <button class="choice-button" id="build-reset" type="button">Start a new build</button>
+      `;
+
+      gameStage.querySelectorAll(".build-choices .choice-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          pieces += 1;
+          document.getElementById("pieces-count").textContent = pieces;
+          document.getElementById("build-message").textContent =
+            `${button.textContent} added to your creation!`;
+        });
+      });
+
+      document.getElementById("build-reset").addEventListener("click", startBuild);
+    }
+
+    function startChoices() {
+      const scenarios = [
+        {
+          question: "You have limited time before nightfall. What should you do first?",
+          answers: ["Find shelter", "Start a long journey", "Ignore the weather"],
+          correct: "Find shelter"
+        },
+        {
+          question: "You discover an unfamiliar trail. What is the safest next move?",
+          answers: ["Check your map", "Run ahead", "Drop your supplies"],
+          correct: "Check your map"
+        },
+        {
+          question: "Your team needs to cross a risky area. What helps most?",
+          answers: ["Make a plan together", "Split up without telling anyone", "Rush in"],
+          correct: "Make a plan together"
+        },
+        {
+          question: "You find useful materials on your journey. What should you do?",
+          answers: ["Save them for useful gear", "Leave everything behind", "Throw them away"],
+          correct: "Save them for useful gear"
+        },
+        {
+          question: "You hear a strange sound nearby. What is a careful response?",
+          answers: ["Look around before moving", "Sprint toward it", "Close your eyes"],
+          correct: "Look around before moving"
+        }
+      ];
+
+      let round = 0;
+      let score = 0;
+
+      function showRound() {
+        if (round >= scenarios.length) {
+          gameStage.innerHTML = `
+            <p class="game-instructions">Challenge complete!</p>
+            <p class="game-message">You made ${score} smart choice${score === 1 ? "" : "s"} out of ${scenarios.length}.</p>
+            <button class="demo-button" id="choices-restart" type="button">Play Again</button>
+          `;
+          document.getElementById("choices-restart").addEventListener("click", startChoices);
+          return;
+        }
+
+        const scenario = scenarios[round];
+        gameStage.innerHTML = `
+          <p class="game-instructions">Decision ${round + 1} of ${scenarios.length} · Score: ${score}</p>
+          <h3>${scenario.question}</h3>
+          <div class="quiz-choices">
+            ${scenario.answers.map((answer) =>
+              `<button class="choice-button" type="button" data-answer="${answer}">${answer}</button>`
+            ).join("")}
+          </div>
+          <p class="game-message" id="choice-message"></p>
+        `;
+
+        gameStage.querySelectorAll("[data-answer]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const correct = button.dataset.answer === scenario.correct;
+            if (correct) score += 1;
+
+            round += 1;
+            gameStage.querySelector("#choice-message").textContent =
+              correct ? "Good choice!" : `Not quite — ${scenario.correct} was the safest choice.`;
+
+            window.setTimeout(showRound, 700);
+          });
+        });
+      }
+
+      showRound();
+    }
+
+    dialogClose.addEventListener("click", () => {
+      stopTimer();
+      dialog.close();
+    });
+
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) {
+        stopTimer();
+        dialog.close();
+      }
+    });
+
+    dialog.addEventListener("close", stopTimer);
+
+    renderGames();
+  </script>
 </body>
 </html>
