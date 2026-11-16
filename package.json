@@ -1,0 +1,29 @@
+{
+  "name": "nexus-ultimate-survival-world",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An all-in-one multiplayer open-world gaming universe combining survival, battle royale, shooting, racing, sports, sandbox building, and adventure.",
+  "license": "UNLICENSED",
+  "author": "NEXUS Development Team",
+  "keywords": [
+    "nexus",
+    "open-world",
+    "multiplayer",
+    "survival",
+    "battle-royale",
+    "shooter",
+    "racing",
+    "sandbox",
+    "adventure",
+    "sports",
+    "gaming"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR-USERNAME/NEXUS-Ultimate-Survival-World.git"
+  },
+  "scripts": {
+    "start": "echo \"NEXUS project is ready for development\"",
+    "test": "echo \"No tests configured yet\""
+  }
+}
