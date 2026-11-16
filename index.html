@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NEXUS is an open-world multiplayer gaming universe. Explore, compete, build, race, and play in one connected world.">
+  <meta name="description" content="NEXUS is an open-world multiplayer survival game. Explore, compete, build, race, and play in one connected world.">
   <meta name="theme-color" content="#080b10">
   <title>NEXUS — Ultimate Survival World</title>
 
@@ -362,28 +362,29 @@
       flex-wrap: wrap;
     }
 
-    /* Game library: added without changing the original page backgrounds */
     .game-library {
       background: #0c1118;
-      border-block: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
     .game-library-heading {
       display: flex;
-      justify-content: space-between;
       align-items: end;
-      gap: 24px;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .game-count {
-      flex: 0 0 auto;
-      margin-bottom: 42px;
-      padding: 9px 13px;
+      display: inline-block;
+      padding: 9px 12px;
       border: 1px solid var(--line);
       border-radius: 999px;
       color: var(--accent);
-      font-size: 0.84rem;
+      font-size: 0.8rem;
       font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .game-filters {
@@ -421,21 +422,19 @@
 
     .game-card {
       position: relative;
-      min-width: 0;
-      min-height: 355px;
+      min-height: 360px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 8px;
       background: #111720;
-      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.22);
-      isolation: isolate;
-      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.26);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
     }
 
     .game-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(197, 255, 74, 0.62);
-      box-shadow: 0 20px 46px rgba(0, 0, 0, 0.38);
+      transform: translateY(-4px);
+      border-color: rgba(197,255,74,0.65);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.36);
     }
 
     .game-card[hidden] {
@@ -444,12 +443,12 @@
 
     .game-card-image {
       position: absolute;
-      z-index: -2;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 450ms ease;
+      filter: saturate(0.9);
+      transition: transform 420ms ease;
     }
 
     .game-card:hover .game-card-image {
@@ -459,29 +458,30 @@
     .game-card::after {
       content: "";
       position: absolute;
-      z-index: -1;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(8, 11, 16, 0.1) 0%, rgba(8, 11, 16, 0.12) 28%, rgba(8, 11, 16, 0.88) 65%, #080b10 100%),
-        linear-gradient(90deg, rgba(8, 11, 16, 0.24), transparent 75%);
+        linear-gradient(180deg, rgba(8,11,16,0.1) 0%, rgba(8,11,16,0.12) 30%, rgba(8,11,16,0.84) 70%, rgba(8,11,16,0.96) 100%);
     }
 
     .game-card-content {
-      min-height: 355px;
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      min-height: 360px;
       padding: 20px;
     }
 
     .game-card-top {
       position: absolute;
-      top: 16px;
       left: 16px;
       right: 16px;
+      top: 16px;
+      z-index: 2;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 12px;
     }
 
@@ -490,18 +490,18 @@
       place-items: center;
       width: 42px;
       height: 42px;
-      border: 1px solid rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.24);
       border-radius: 50%;
-      background: rgba(8, 11, 16, 0.58);
+      background: rgba(8,11,16,0.52);
       font-size: 1.2rem;
       backdrop-filter: blur(8px);
     }
 
     .game-category {
       padding: 6px 10px;
-      border: 1px solid rgba(197, 255, 74, 0.4);
+      border: 1px solid rgba(197,255,74,0.38);
       border-radius: 999px;
-      background: rgba(8, 11, 16, 0.68);
+      background: rgba(8,11,16,0.62);
       color: var(--accent);
       font-size: 0.68rem;
       font-weight: 800;
@@ -511,17 +511,17 @@
     }
 
     .game-card h3 {
-      margin: 0 0 7px;
-      font-size: 1.3rem;
+      margin: 0 0 8px;
+      font-size: 1.25rem;
       line-height: 1.2;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.02em;
     }
 
     .game-card p {
       min-height: 44px;
       margin: 0 0 16px;
-      color: #c1cbd2;
-      font-size: 0.89rem;
+      color: #c5ced6;
+      font-size: 0.9rem;
       line-height: 1.5;
     }
 
@@ -535,8 +535,8 @@
     }
 
     .game-platform {
-      color: #c5cdd3;
-      font-size: 0.69rem;
+      color: #d5dce2;
+      font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -553,7 +553,6 @@
       font: inherit;
       font-size: 0.78rem;
       font-weight: 800;
-      white-space: nowrap;
       transition: transform 160ms ease, background 160ms ease;
     }
 
@@ -566,15 +565,15 @@
       width: min(620px, calc(100% - 28px));
       max-width: 620px;
       padding: 0;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255,255,255,0.18);
       border-radius: 8px;
       background: #10151d;
       color: var(--text);
-      box-shadow: 0 24px 90px rgba(0, 0, 0, 0.65);
+      box-shadow: 0 24px 90px rgba(0,0,0,0.65);
     }
 
     .game-dialog::backdrop {
-      background: rgba(0, 0, 0, 0.78);
+      background: rgba(0,0,0,0.76);
       backdrop-filter: blur(5px);
     }
 
@@ -621,7 +620,7 @@
 
     .game-stage {
       min-height: 260px;
-      padding: 22px 0 4px;
+      padding-top: 20px;
     }
 
     .game-instructions {
@@ -636,7 +635,6 @@
       gap: 12px;
       margin-bottom: 12px;
       color: var(--accent);
-      font-size: 0.9rem;
       font-weight: 800;
     }
 
@@ -647,24 +645,22 @@
       border: 1px solid var(--line);
       border-radius: 6px;
       background:
-        radial-gradient(circle at center, rgba(197, 255, 74, 0.08), transparent 58%),
+        radial-gradient(circle at center, rgba(197,255,74,0.08), transparent 58%),
         #080b10;
     }
 
     .target-button {
       position: absolute;
-      display: grid;
-      place-items: center;
       width: 46px;
       height: 46px;
       border: 0;
       border-radius: 50%;
       background: var(--accent);
       color: #10150a;
-      cursor: pointer;
       font-size: 1.15rem;
       font-weight: 900;
-      box-shadow: 0 0 20px rgba(197, 255, 74, 0.35);
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(197,255,74,0.35);
     }
 
     .demo-button,
@@ -708,9 +704,9 @@
     .race-track {
       height: 24px;
       margin: 18px 0;
-      overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 999px;
+      overflow: hidden;
       background: #080b10;
     }
 
@@ -718,17 +714,12 @@
       width: 0;
       height: 100%;
       background: var(--accent);
-      transition: width 120ms ease;
+      transition: width 110ms ease;
     }
 
     .build-score {
       color: var(--accent);
       font-weight: 800;
-    }
-
-    :focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
     }
 
     @media (max-width: 900px) {
@@ -769,7 +760,7 @@
 
       .game-count {
         display: inline-block;
-        margin: -20px 0 28px;
+        margin-bottom: 20px;
       }
     }
 
@@ -797,11 +788,6 @@
 
       .hero {
         min-height: 640px;
-      }
-
-      .game-card,
-      .game-card-content {
-        min-height: 340px;
       }
 
       .dialog-inner {
@@ -847,7 +833,7 @@
             Race, compete, and create your own story with friends.
           </p>
           <div class="button-row">
-            <a class="button" href="#games">Discover the Games</a>
+            <a class="button" href="#games">Explore the Games</a>
             <a class="button secondary" href="#world">Discover the World</a>
           </div>
           <p class="hero-note">One World. Unlimited Adventures. Endless Possibilities.</p>
@@ -933,7 +919,7 @@
           <div class="section-heading">
             <p class="eyebrow">The NEXUS game library</p>
             <h2>Pick your next adventure.</h2>
-            <p>50 distinct games across 10 categories. Choose a category to explore its games.</p>
+            <p>50 distinct games across 10 categories. Filter and play.</p>
           </div>
           <span class="game-count" id="game-count">50 GAMES</span>
         </div>
@@ -1078,69 +1064,69 @@
   </dialog>
 
   <script>
-    const photo = (id) =>
-      `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=82`;
+    const image = (id) =>
+      `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=80`;
 
     const games = [
-      { title: "Neon Strike", category: "action", icon: "⚔", mode: "targets", image: photo("photo-1519608487953-e999c86e7455"), description: "Hit moving targets in a fast-paced arena challenge." },
-      { title: "Iron Circuit", category: "action", icon: "🔧", mode: "targets", image: photo("photo-1519608487953-e999c86e7455"), description: "Race through a dangerous course packed with obstacles." },
-      { title: "Shadow Hunt", category: "action", icon: "🏃", mode: "targets", image: photo("photo-1500530855697-b586d89ba3ee"), description: "Track your target through a sprawling wilderness." },
-      { title: "Vortex Run", category: "action", icon: "🌀", mode: "targets", image: photo("photo-1464822759023-fed622ff2c3b"), description: "Dodge hazards and race toward the finish." },
-      { title: "Bladebound", category: "action", icon: "🗡️", mode: "targets", image: photo("photo-1500534623283-312aade485b7"), description: "Test your reflexes in a close-quarters combat trial." },
+      { title: "Neon Strike", category: "action", icon: "⚔", mode: "targets", image: image("photo-1519608487953-e999c86e7455"), description: "Hit moving targets in a fast arena challenge." },
+      { title: "Iron Circuit", category: "action", icon: "🔧", mode: "targets", image: image("photo-1500534623283-312aade485b7"), description: "Sprint through a danger-filled obstacle run." },
+      { title: "Shadow Hunt", category: "action", icon: "🏃", mode: "targets", image: image("photo-1500530855697-b586d89ba3ee"), description: "Track enemies across a dangerous open field." },
+      { title: "Vortex Run", category: "action", icon: "🌀", mode: "targets", image: image("photo-1464822759023-fed622ff2c3b"), description: "Dodge hazards and keep moving under pressure." },
+      { title: "Bladebound", category: "action", icon: "🗡️", mode: "targets", image: image("photo-1501785888041-af3ef285b470"), description: "Quick reactions decide victory in this duel." },
 
-      { title: "Ghost Protocol", category: "tactical", icon: "⌖", mode: "choices", image: photo("photo-1511497584788-876760111969"), description: "Plan a quiet route through a guarded wilderness." },
-      { title: "Iron Vanguard", category: "tactical", icon: "🛡️", mode: "choices", image: photo("photo-1464822759023-fed622ff2c3b"), description: "Lead a squad and make choices under pressure." },
-      { title: "Crossfire Tactics", category: "tactical", icon: "⚑", mode: "choices", image: photo("photo-1500530855697-b586d89ba3ee"), description: "Protect your objective with smart team decisions." },
-      { title: "Steel Signal", category: "tactical", icon: "📡", mode: "choices", image: photo("photo-1519681393784-d120267933ba"), description: "Read the situation and decide your next move." },
-      { title: "Silent Protocol", category: "tactical", icon: "♟", mode: "choices", image: photo("photo-1470770841072-f978cf4d019e"), description: "Use stealth and careful planning to complete your mission." },
+      { title: "Ghost Protocol", category: "tactical", icon: "⌖", mode: "choices", image: image("photo-1511497584788-876760111969"), description: "Choose the right path through hostile territory." },
+      { title: "Iron Vanguard", category: "tactical", icon: "🛡️", mode: "choices", image: image("photo-1519681393784-d120267933ba"), description: "Command your squad through tactical objectives." },
+      { title: "Crossfire Tactics", category: "tactical", icon: "⚑", mode: "choices", image: image("photo-1464822759023-fed622ff2c3b"), description: "Hold your ground and outsmart the enemy." },
+      { title: "Steel Signal", category: "tactical", icon: "📡", mode: "choices", image: image("photo-1500530855697-b586d89ba3ee"), description: "Gather intel and make the safest move." },
+      { title: "Silent Protocol", category: "tactical", icon: "♟", mode: "choices", image: image("photo-1470770841072-f978cf4d019e"), description: "Use stealth and timing for a clean escape." },
 
-      { title: "Zero Hour", category: "shooter", icon: "✦", mode: "targets", image: photo("photo-1519608487953-e999c86e7455"), description: "Score hits in a rapid-fire target challenge." },
-      { title: "Redline Fire", category: "shooter", icon: "🔥", mode: "targets", image: photo("photo-1500534623283-312aade485b7"), description: "Keep your aim steady in a high-pressure arena." },
-      { title: "Rift Breakers", category: "shooter", icon: "💥", mode: "targets", image: photo("photo-1519681393784-d120267933ba"), description: "Clear a dangerous zone before time runs out." },
-      { title: "Arctic Storm", category: "shooter", icon: "❄️", mode: "targets", image: photo("photo-1464822759023-fed622ff2c3b"), description: "Take on a frozen battleground and hit your targets." },
-      { title: "Skyfall Squad", category: "shooter", icon: "☄️", mode: "targets", image: photo("photo-1501785888041-af3ef285b470"), description: "Drop into a new arena and react to changing threats." },
+      { title: "Zero Hour", category: "shooter", icon: "✦", mode: "targets", image: image("photo-1519608487953-e999c86e7455"), description: "Rapid-fire target challenge under pressure." },
+      { title: "Redline Fire", category: "shooter", icon: "🔥", mode: "targets", image: image("photo-1500534623283-312aade485b7"), description: "Take precise shots in a high-pressure arena." },
+      { title: "Rift Breakers", category: "shooter", icon: "💥", mode: "targets", image: image("photo-1519681393784-d120267933ba"), description: "Clear danger zones before the timer ends." },
+      { title: "Arctic Storm", category: "shooter", icon: "❄️", mode: "targets", image: image("photo-1464822759023-fed622ff2c3b"), description: "Fight through a frozen combat zone." },
+      { title: "Skyfall Squad", category: "shooter", icon: "☄️", mode: "targets", image: image("photo-1501785888041-af3ef285b470"), description: "React quickly in a changing battle arena." },
 
-      { title: "Wild Frontier", category: "survival", icon: "🌲", mode: "choices", image: photo("photo-1470770841072-f978cf4d019e"), description: "Find supplies and survive in a remote wilderness." },
-      { title: "Last Shelter", category: "survival", icon: "⌂", mode: "choices", image: photo("photo-1448375240586-882707db888b"), description: "Make the right decisions to keep your shelter secure." },
-      { title: "Castaway", category: "survival", icon: "⚓", mode: "choices", image: photo("photo-1500375592092-40eb2168fd21"), description: "Gather what you need to survive on a lonely island." },
-      { title: "Frostline", category: "survival", icon: "❄️", mode: "choices", image: photo("photo-1519681393784-d120267933ba"), description: "Stay warm and find resources in the frozen north." },
-      { title: "Greenfall", category: "survival", icon: "🍃", mode: "choices", image: photo("photo-1511497584788-876760111969"), description: "Explore a dense jungle and prepare for the wild." },
+      { title: "Wild Frontier", category: "survival", icon: "🌲", mode: "choices", image: image("photo-1470770841072-f978cf4d019e"), description: "Find supplies and survive a dangerous wilderness." },
+      { title: "Last Shelter", category: "survival", icon: "⌂", mode: "choices", image: image("photo-1448375240586-882707db888b"), description: "Build a strong base and survive the night." },
+      { title: "Castaway", category: "survival", icon: "⚓", mode: "choices", image: image("photo-1500375592092-40eb2168fd21"), description: "Gather resources on an island and stay alive." },
+      { title: "Frostline", category: "survival", icon: "❄️", mode: "choices", image: image("photo-1519681393784-d120267933ba"), description: "Stay warm while surviving the frozen frontier." },
+      { title: "Greenfall", category: "survival", icon: "🍃", mode: "choices", image: image("photo-1511497584788-876760111969"), description: "Explore a dense jungle and prepare for danger." },
 
-      { title: "Lost Horizon", category: "adventure", icon: "🌄", mode: "choices", image: photo("photo-1464822759023-fed622ff2c3b"), description: "Follow clues through a forgotten mountain kingdom." },
-      { title: "Beyond the Map", category: "adventure", icon: "🧭", mode: "choices", image: photo("photo-1500530855697-b586d89ba3ee"), description: "Choose your route across an unexplored world." },
-      { title: "Deep Unknown", category: "adventure", icon: "🌊", mode: "choices", image: photo("photo-1500375592092-40eb2168fd21"), description: "Uncover secrets along an uncharted coastline." },
-      { title: "Ruins of Eryx", category: "adventure", icon: "🏛️", mode: "choices", image: photo("photo-1470770841072-f978cf4d019e"), description: "Explore ancient ruins and solve a forgotten mystery." },
-      { title: "The Sky Isles", category: "adventure", icon: "☁️", mode: "choices", image: photo("photo-1501785888041-af3ef285b470"), description: "Travel between distant peaks on an epic journey." },
+      { title: "Lost Horizon", category: "adventure", icon: "🌄", mode: "choices", image: image("photo-1464822759023-fed622ff2c3b"), description: "Follow ancient clues through a forgotten kingdom." },
+      { title: "Beyond the Map", category: "adventure", icon: "🧭", mode: "choices", image: image("photo-1500530855697-b586d89ba3ee"), description: "Choose the route across an uncharted world." },
+      { title: "Deep Unknown", category: "adventure", icon: "🌊", mode: "choices", image: image("photo-1500375592092-40eb2168fd21"), description: "Uncover the secrets hidden across a coastline." },
+      { title: "Ruins of Eryx", category: "adventure", icon: "🏛️", mode: "choices", image: image("photo-1470770841072-f978cf4d019e"), description: "Explore forgotten ruins and solve a mystery." },
+      { title: "The Sky Isles", category: "adventure", icon: "☁️", mode: "choices", image: image("photo-1501785888041-af3ef285b470"), description: "Travel between distant peaks on a grand journey." },
 
-      { title: "Whispering Pines", category: "horror", icon: "☾", mode: "targets", image: photo("photo-1511497584788-876760111969"), description: "Find your way through a forest that hides something." },
-      { title: "Silent Ward", category: "horror", icon: "👁️", mode: "choices", image: photo("photo-1519608487953-e999c86e7455"), description: "Search a deserted ward and make it out safely." },
-      { title: "Night Shift", category: "horror", icon: "🌙", mode: "targets", image: photo("photo-1519681393784-d120267933ba"), description: "Stay alert through a strange and unsettling night." },
-      { title: "The Hollow House", category: "horror", icon: "🏚️", mode: "choices", image: photo("photo-1448375240586-882707db888b"), description: "Search the house for clues and a way to escape." },
-      { title: "Blackwater", category: "horror", icon: "🌫️", mode: "targets", image: photo("photo-1500375592092-40eb2168fd21"), description: "Watch the dark water and react to what appears." },
+      { title: "Whispering Pines", category: "horror", icon: "☾", mode: "targets", image: image("photo-1511497584788-876760111969"), description: "Move carefully through a forest that breathes." },
+      { title: "Silent Ward", category: "horror", icon: "👁️", mode: "choices", image: image("photo-1519608487953-e999c86e7455"), description: "Search a deserted place and survive the night." },
+      { title: "Night Shift", category: "horror", icon: "🌙", mode: "targets", image: image("photo-1519681393784-d120267933ba"), description: "Stay alert and survive the longest night." },
+      { title: "The Hollow House", category: "horror", icon: "🏚️", mode: "choices", image: image("photo-1448375240586-882707db888b"), description: "Search a haunted house for hidden truths." },
+      { title: "Blackwater", category: "horror", icon: "🌫️", mode: "targets", image: image("photo-1500375592092-40eb2168fd21"), description: "Watch the dark waters and react before it’s too late." },
 
-      { title: "Goose on the Loose", category: "funny", icon: "🦆", mode: "targets", image: photo("photo-1500530855697-b586d89ba3ee"), description: "Catch the runaway goose before it causes more chaos." },
-      { title: "Wobbly Warriors", category: "funny", icon: "☻", mode: "targets", image: photo("photo-1470770841072-f978cf4d019e"), description: "Keep up with wobbly characters in a silly challenge." },
-      { title: "Kitchen Dash", category: "funny", icon: "🍽️", mode: "choices", image: photo("photo-1500375592092-40eb2168fd21"), description: "Make ridiculous decisions in a chaotic kitchen." },
-      { title: "Banana Blitz", category: "funny", icon: "🍌", mode: "race", image: photo("photo-1501785888041-af3ef285b470"), description: "Race through a slippery course full of goofy surprises." },
-      { title: "Laundry Legends", category: "funny", icon: "🧦", mode: "targets", image: photo("photo-1511497584788-876760111969"), description: "Catch flying socks in an absurd laundry-room battle." },
+      { title: "Goose on the Loose", category: "funny", icon: "🦆", mode: "targets", image: image("photo-1500530855697-b586d89ba3ee"), description: "Catch the runaway goose before the chaos spreads." },
+      { title: "Wobbly Warriors", category: "funny", icon: "☻", mode: "targets", image: image("photo-1470770841072-f978cf4d019e"), description: "Keep up with wobbling characters in a silly challenge." },
+      { title: "Kitchen Dash", category: "funny", icon: "🍽️", mode: "choices", image: image("photo-1500375592092-40eb2168fd21"), description: "Serve a chaotic dinner before disaster strikes." },
+      { title: "Banana Blitz", category: "funny", icon: "🍌", mode: "race", image: image("photo-1501785888041-af3ef285b470"), description: "Race through a slippery map full of laughs." },
+      { title: "Laundry Legends", category: "funny", icon: "🧦", mode: "targets", image: image("photo-1511497584788-876760111969"), description: "Catch flying socks in a ridiculous laundry battle." },
 
-      { title: "Neon Rush", category: "racing", icon: "🏎️", mode: "race", image: photo("photo-1500534623283-312aade485b7"), description: "Speed through a glowing city circuit." },
-      { title: "Trailblazer Rally", category: "racing", icon: "🚙", mode: "race", image: photo("photo-1501785888041-af3ef285b470"), description: "Race across mountain roads and rough trails." },
-      { title: "Midnight Drift", category: "racing", icon: "🌃", mode: "race", image: photo("photo-1519608487953-e999c86e7455"), description: "Drift around a dramatic night-time course." },
-      { title: "Turbo Dunes", category: "racing", icon: "🏜️", mode: "race", image: photo("photo-1500530855697-b586d89ba3ee"), description: "Blast across desert tracks and sandy turns." },
-      { title: "Coastline Sprint", category: "racing", icon: "🌊", mode: "race", image: photo("photo-1500375592092-40eb2168fd21"), description: "Race beside the water on a winding coastal road." },
+      { title: "Neon Rush", category: "racing", icon: "🏎️", mode: "race", image: image("photo-1500534623283-312aade485b7"), description: "Speed through a luminous night circuit." },
+      { title: "Trailblazer Rally", category: "racing", icon: "🚙", mode: "race", image: image("photo-1501785888041-af3ef285b470"), description: "Race across mountain roads and rough terrain." },
+      { title: "Midnight Drift", category: "racing", icon: "🌃", mode: "race", image: image("photo-1519608487953-e999c86e7455"), description: "Drift around a dramatic night-time course." },
+      { title: "Turbo Dunes", category: "racing", icon: "🏜️", mode: "race", image: image("photo-1500530855697-b586d89ba3ee"), description: "Blast through dessert tracks and sandy turns." },
+      { title: "Coastline Sprint", category: "racing", icon: "🌊", mode: "race", image: image("photo-1500375592092-40eb2168fd21"), description: "Race beside the water on a coastal loop." },
 
-      { title: "Build Beyond", category: "creative", icon: "🏠", mode: "build", image: photo("photo-1448375240586-882707db888b"), description: "Build a personal retreat surrounded by nature." },
-      { title: "World Makers", category: "creative", icon: "🧱", mode: "build", image: photo("photo-1470770841072-f978cf4d019e"), description: "Shape your own landscape one piece at a time." },
-      { title: "Pixel Studio", category: "creative", icon: "🎨", mode: "build", image: photo("photo-1501785888041-af3ef285b470"), description: "Create a colorful scene from your imagination." },
-      { title: "Dream Forge", category: "creative", icon: "✨", mode: "build", image: photo("photo-1464822759023-fed622ff2c3b"), description: "Design a place that feels like another world." },
-      { title: "Garden Galaxy", category: "creative", icon: "🌱", mode: "build", image: photo("photo-1511497584788-876760111969"), description: "Create a peaceful garden in a world of your own." },
+      { title: "Build Beyond", category: "creative", icon: "🏠", mode: "build", image: image("photo-1448375240586-882707db888b"), description: "Build a personal retreat in the middle of nature." },
+      { title: "World Makers", category: "creative", icon: "🧱", mode: "build", image: image("photo-1470770841072-f978cf4d019e"), description: "Shape your landscape one piece at a time." },
+      { title: "Pixel Studio", category: "creative", icon: "🎨", mode: "build", image: image("photo-1501785888041-af3ef285b470"), description: "Create a colorful world from your imagination." },
+      { title: "Dream Forge", category: "creative", icon: "✨", mode: "build", image: image("photo-1464822759023-fed622ff2c3b"), description: "Design a magical place with your own style." },
+      { title: "Garden Galaxy", category: "creative", icon: "🌱", mode: "build", image: image("photo-1511497584788-876760111969"), description: "Create a peaceful garden in a world of your own." },
 
-      { title: "Goal Rush", category: "sports", icon: "⚽", mode: "sports", image: photo("photo-1500530855697-b586d89ba3ee"), description: "Aim for the goal and score before time runs out." },
-      { title: "Penalty Stars", category: "sports", icon: "🥅", mode: "sports", image: photo("photo-1501785888041-af3ef285b470"), description: "Take penalty shots and try to beat the keeper." },
-      { title: "Court Clash", category: "sports", icon: "🏀", mode: "sports", image: photo("photo-1500534623283-312aade485b7"), description: "Pick your shot and score in a quick court challenge." },
-      { title: "Racket Rally", category: "sports", icon: "🎾", mode: "sports", image: photo("photo-1470770841072-f978cf4d019e"), description: "Read the play and choose where to send the ball." },
-      { title: "Cricket Kings", category: "sports", icon: "🏏", mode: "sports", image: photo("photo-1500530855697-b586d89ba3ee"), description: "Time your shot and score runs in a mini batting game." }
+      { title: "Goal Rush", category: "sports", icon: "⚽", mode: "sports", image: image("photo-1500530855697-b586d89ba3ee"), description: "Score as many goals as possible quickly." },
+      { title: "Penalty Stars", category: "sports", icon: "🥅", mode: "sports", image: image("photo-1501785888041-af3ef285b470"), description: "Take penalty shots and beat the keeper." },
+      { title: "Court Clash", category: "sports", icon: "🏀", mode: "sports", image: image("photo-1500534623283-312aade485b7"), description: "Quick, competitive shots in a fast court match." },
+      { title: "Racket Rally", category: "sports", icon: "🎾", mode: "sports", image: image("photo-1470770841072-f978cf4d019e"), description: "Place your shot and win the point." },
+      { title: "Cricket Kings", category: "sports", icon: "🏏", mode: "sports", image: image("photo-1500530855697-b586d89ba3ee"), description: "Time your shot and score runs in a mini match." }
     ];
 
     const gameGrid = document.getElementById("game-grid");
@@ -1168,7 +1154,7 @@
           <img
             class="game-card-image"
             src="${game.image}"
-            alt="${game.title} game artwork"
+            alt="${game.title}"
             loading="lazy"
           >
           <div class="game-card-top">
@@ -1179,34 +1165,28 @@
             <h3>${game.title}</h3>
             <p>${game.description}</p>
             <div class="game-card-footer">
-              <span class="game-platform">NEXUS ORIGINAL</span>
-              <button
-                class="game-button"
-                type="button"
-                data-game-title="${game.title}"
-              >${demoModeEnabled ? "Play a Demo" : "Play a Game"}</button>
+              <span class="game-platform">NEXUS</span>
+              <button class="game-button" type="button" data-game-title="${game.title}">
+                ${demoModeEnabled ? "Play a Demo" : "Play a Game"}
+              </button>
             </div>
           </div>
         </article>
       `).join("");
 
-      gameGrid.querySelectorAll(".game-button").forEach((button) => {
+      document.querySelectorAll(".game-button").forEach((button) => {
         button.addEventListener("click", () => {
-          const game = games.find((item) => item.title === button.dataset.gameTitle);
-          if (game) openGame(game);
+          const selected = games.find((game) => game.title === button.dataset.gameTitle);
+          if (selected) openGame(selected);
         });
       });
     }
 
     filterButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        filterButtons.forEach((filterButton) => {
-          filterButton.setAttribute(
-            "aria-pressed",
-            String(filterButton === button)
-          );
+        filterButtons.forEach((btn) => {
+          btn.setAttribute("aria-pressed", String(btn === button));
         });
-
         renderGames(button.dataset.filter);
       });
     });
@@ -1214,15 +1194,13 @@
     demoToggle.addEventListener("click", (event) => {
       event.preventDefault();
       demoModeEnabled = true;
-
       const selectedFilter =
         document.querySelector(".filter-button[aria-pressed='true']")?.dataset.filter || "all";
-
       renderGames(selectedFilter);
       document.getElementById("games").scrollIntoView({ behavior: "smooth" });
     });
 
-    function stopGameTimer() {
+    function stopTimer() {
       if (activeTimer) {
         clearInterval(activeTimer);
         activeTimer = null;
@@ -1230,18 +1208,10 @@
     }
 
     function openGame(game) {
-      stopGameTimer();
-
+      stopTimer();
       dialogTitle.textContent = game.title;
-      dialogCategory.textContent = `${game.category} · playable mini-game`;
-      startMiniGame(game);
+      dialogCategory.textContent = `${game.category} mini-game`;
 
-      if (!dialog.open) {
-        dialog.showModal();
-      }
-    }
-
-    function startMiniGame(game) {
       if (game.mode === "race") {
         startRace();
       } else if (game.mode === "sports") {
@@ -1253,6 +1223,8 @@
       } else {
         startTargets();
       }
+
+      dialog.showModal();
     }
 
     function startTargets() {
@@ -1269,7 +1241,7 @@
           <button class="target-button" id="target-button" type="button" aria-label="Hit the target">✦</button>
         </div>
         <p class="game-message" id="target-message">Ready? Start clicking!</p>
-        <button class="demo-button" id="target-restart" type="button">Restart game</button>
+        <button class="demo-button" id="target-restart" type="button">Restart</button>
       `;
 
       const area = document.getElementById("target-area");
@@ -1301,9 +1273,9 @@
         timeDisplay.textContent = seconds;
 
         if (seconds <= 0) {
-          stopGameTimer();
+          stopTimer();
           target.disabled = true;
-          message.textContent = `Time’s up! Your score: ${score}.`;
+          message.textContent = `Time's up! You scored ${score}.`;
         }
       }, 1000);
     }
@@ -1312,13 +1284,13 @@
       let progress = 0;
 
       gameStage.innerHTML = `
-        <p class="game-instructions">Tap the button to accelerate and race to the finish.</p>
+        <p class="game-instructions">Tap to accelerate and finish the race.</p>
         <div class="game-hud">
           <span>Race progress</span>
           <span id="race-percent">0%</span>
         </div>
         <div class="race-track"><div class="race-progress" id="race-progress"></div></div>
-        <p class="game-message" id="race-message">Ready at the starting line.</p>
+        <p class="game-message" id="race-message">Ready at the start.</p>
         <button class="demo-button" id="accelerate-button" type="button">Accelerate!</button>
         <button class="choice-button" id="race-restart" type="button">Restart</button>
       `;
@@ -1331,7 +1303,7 @@
       accelerate.addEventListener("click", () => {
         if (progress >= 100) return;
 
-        progress = Math.min(100, progress + 9 + Math.floor(Math.random() * 10));
+        progress = Math.min(100, progress + 10 + Math.floor(Math.random() * 12));
         progressBar.style.width = `${progress}%`;
         percentage.textContent = `${progress}%`;
 
@@ -1353,10 +1325,10 @@
       let attempts = 8;
 
       gameStage.innerHTML = `
-        <p class="game-instructions">Shoot for the highlighted zone. You have 8 attempts.</p>
+        <p class="game-instructions">Aim for the highlighted zone. You have 8 shots.</p>
         <div class="game-hud">
-          <span>Score: <strong id="sports-score">0</strong></span>
-          <span>Attempts: <strong id="sports-attempts">8</strong></span>
+          <span>Goals: <strong id="sports-score">0</strong></span>
+          <span>Shots left: <strong id="sports-attempts">8</strong></span>
         </div>
         <p class="game-message" id="sports-message"></p>
         <div class="choice-list">
@@ -1364,7 +1336,7 @@
           <button class="choice-button" type="button" data-zone="Center">Center</button>
           <button class="choice-button" type="button" data-zone="Right">Right</button>
         </div>
-        <p><button class="choice-button" id="sports-restart" type="button">Restart game</button></p>
+        <p><button class="choice-button" id="sports-restart" type="button">Restart</button></p>
       `;
 
       const message = document.getElementById("sports-message");
@@ -1379,9 +1351,10 @@
           if (attempts <= 0) return;
 
           attempts -= 1;
+
           if (button.dataset.zone === goal) {
             score += 1;
-            message.textContent = "Score! Great shot!";
+            message.textContent = "Goal! Nice shot!";
           } else {
             message.textContent = "Saved! Try another zone.";
           }
@@ -1390,7 +1363,7 @@
           document.getElementById("sports-attempts").textContent = attempts;
 
           if (attempts === 0) {
-            message.textContent = `Game over! You scored ${score} point${score === 1 ? "" : "s"}.`;
+            message.textContent = `Game over! You scored ${score} goal${score === 1 ? "" : "s"}.`;
             gameStage.querySelectorAll("[data-zone]").forEach((zoneButton) => {
               zoneButton.disabled = true;
             });
@@ -1408,7 +1381,7 @@
       let pieces = 0;
 
       gameStage.innerHTML = `
-        <p class="game-instructions">Choose pieces to add them to your creative build.</p>
+        <p class="game-instructions">Pick pieces and create your own design.</p>
         <p class="build-score">Pieces placed: <strong id="pieces-count">0</strong></p>
         <div class="choice-list" id="build-options">
           <button class="choice-button" type="button">🧱 Wall</button>
@@ -1418,8 +1391,8 @@
           <button class="choice-button" type="button">🏠 Roof</button>
           <button class="choice-button" type="button">🌼 Flower</button>
         </div>
-        <p class="game-message" id="build-message">Start creating your world.</p>
-        <button class="demo-button" id="build-restart" type="button">Start a new build</button>
+        <p class="game-message" id="build-message">Start building your world.</p>
+        <button class="demo-button" id="build-restart" type="button">New build</button>
       `;
 
       document.querySelectorAll("#build-options .choice-button").forEach((button) => {
@@ -1427,7 +1400,7 @@
           pieces += 1;
           document.getElementById("pieces-count").textContent = pieces;
           document.getElementById("build-message").textContent =
-            `${button.textContent} added to your creation!`;
+            `${button.textContent} added to your build!`;
         });
       });
 
@@ -1442,23 +1415,23 @@
           correct: "Find shelter"
         },
         {
-          question: "You discover an unfamiliar trail. What is the careful move?",
-          answers: ["Check your map", "Run ahead", "Leave your supplies"],
+          question: "You discover an unfamiliar trail. What is the safest move?",
+          answers: ["Check your map", "Run ahead", "Leave your gear"],
           correct: "Check your map"
         },
         {
           question: "Your team needs to cross a risky area. What helps most?",
-          answers: ["Plan together", "Split up silently", "Rush in"],
+          answers: ["Plan together", "Split up", "Rush in"],
           correct: "Plan together"
         },
         {
           question: "You find useful materials. What should you do?",
-          answers: ["Save them for gear", "Drop everything", "Waste them"],
+          answers: ["Save them for gear", "Drop them", "Waste them"],
           correct: "Save them for gear"
         },
         {
-          question: "You hear a strange sound nearby. What is a cautious response?",
-          answers: ["Look around first", "Sprint toward it", "Ignore everything"],
+          question: "You hear a strange sound nearby. What is the careful reaction?",
+          answers: ["Look around first", "Sprint toward it", "Close your eyes"],
           correct: "Look around first"
         }
       ];
@@ -1497,9 +1470,9 @@
 
             round += 1;
             document.getElementById("choice-message").textContent =
-              correct ? "Good choice!" : `Not quite — ${scenario.correct} was the best choice.`;
+              correct ? "Good choice!" : `Not quite — ${scenario.correct} was the best move.`;
 
-            window.setTimeout(showRound, 650);
+            window.setTimeout(showRound, 700);
           });
         });
       }
@@ -1508,18 +1481,18 @@
     }
 
     dialogClose.addEventListener("click", () => {
-      stopGameTimer();
+      stopTimer();
       dialog.close();
     });
 
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) {
-        stopGameTimer();
+        stopTimer();
         dialog.close();
       }
     });
 
-    dialog.addEventListener("close", stopGameTimer);
+    dialog.addEventListener("close", stopTimer);
 
     renderGames();
   </script>
