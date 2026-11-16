@@ -1,0 +1,107 @@
+# ==============================
+# NEXUS - Ultimate Survival World
+# Git Ignore Configuration
+# ==============================
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE and Editors
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Temporary Files
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.old
+
+# Environment and Secrets
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+credentials.json
+
+# Build Outputs
+build/
+dist/
+out/
+bin/
+obj/
+release/
+debug/
+
+# Dependencies
+node_modules/
+vendor/
+packages/
+
+# Cache Files
+.cache/
+.cache-loader/
+.parcel-cache/
+.eslintcache
+.npm/
+.yarn/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Unity (if used)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+*.csproj
+*.unityproj
+*.sln
+*.pidb
+*.svclog
+
+# Unreal Engine (if used)
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vs/
+
+# Android Studio
+.gradle/
+local.properties
+.cxx/
+.externalNativeBuild/
+captures/
+*.apk
+*.aab
+
+# Game Exports
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Backup Files
+*.zip
+*.rar
+*.7z
+
+# ==============================
+# End of NEXUS .gitignore
+# ==============================
